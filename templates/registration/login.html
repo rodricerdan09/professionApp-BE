@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Ingresar{% endblock title %}
+
+{% block content %}
+
+{% if messages%}
+    {% for message in messages %}
+        {{message.tag}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Bienvenido!</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif%}
+
+<div class="content-section">
+        <form method="POST">{% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Ingresa a tu cuenta</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Ingresar</button>
+            </div>
+        </form>
+
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                No tienes cuenta?<a class="ml-2" href="{% url 'signup' %}">Crear cuenta</a>
+            </small>
+        </div>
+</div>
+{% endblock content %}

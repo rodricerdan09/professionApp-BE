@@ -1,0 +1,30 @@
+para activar el entorno virtual el Win2
+
+cd .\Japo\Documentos\PycharmProjects\Proyecto\v1
+
+venv\Scripts\activate
+
+django-admin.exe startproject src .
+python manage.py migrate
+python manage.py startapp accounts
+python manage.py createsuperuser
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LANGUAGE_CODE = 'es-AR'
+
+TIME_ZONE: 'America/Argentina/Buenos_Aires'
+
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+
+]
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Especialidades{% endblock title %}
+
+{% block content %}
+
+{%if object_list%}
+
+{% with object_list|first as first_object %}
+    <center><h2>{{ first_object.profesion |title }} tiene {{object_list | length}} especialidades
+    </h2></center>
+{% endwith %}
+
+<br>
+
+
+<div class="row">
+   {% for profesion in object_list %}
+
+    <div class="col-sm-4">
+        {%if profesion.count_esp > 0 %}
+        <div class="card border-info mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ profesion.name | title }}</h5>
+            <p class="card-text">Cantidad de profesionales: .</p>
+            <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn" role="button">
+                Ver profesionales ({{profesion.count_esp}})
+            </a>
+          </div>
+        </div>
+
+        {%else%}
+            <div class="card border-seconday mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ profesion.name | title }}</h5>
+                <p class="card-text">Cantidad de profesionales: .</p>
+                <a href="#" class="btn btn-secondary btn disabled" role="button" aria-disabled="true">
+                    Ver profesionales: ninguno  =(
+                </a>
+              </div>
+            </div>
+
+        {%endif%}
+    </div>
+    {% endfor %}
+
+</div><br>
+{% comment %}
+    {% for profesion in object_list %}
+        <li>{{ profesion.name |title}}</li>
+    {% empty %}
+        <li>No existen Especialidades en {{ request.path }}</li>
+        <li>No existen Especialidades en {{ request.get_full_path }}</li>
+        <li>No existen Especialidades en {{ request.build_absolute_uri }}</li>
+        <li>No existen Especialidades en {{ context }}</li>
+    {% endfor %}
+{% endcomment %}
+
+
+
+{%else%}
+    <center><h2>No tenemos especialidades aqui :(</h2></center>
+{% endif %}
+
+{% endblock %}

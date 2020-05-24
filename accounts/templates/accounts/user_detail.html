@@ -1,0 +1,29 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Detalle del Profesional{% endblock title %}
+
+{% block content %}
+
+
+<h2>Mi Cuenta</h2>
+<p><strong>Bienvenido:</strong> {{ object.get_full_name | title }}<i>{{ object.bio |default:" (sin bio)" }}</i>
+{% comment %} <i>({{ object.bio|default_if_none:"sin bio"}})</i> {% endcomment %}
+<p><strong>Usuario:</strong> {{ object.username }}</p>
+<p><strong>Dni:</strong> {{ object.dni }}</p>
+<p><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</p>
+<p><strong>Direccion:</strong> {{ object.direccion }}</p>
+<p><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</p>
+<p><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</p>
+
+<p><strong>Email:</strong> {{ object.email }}</p>
+<p><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </p>
+<p><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</p>
+{% comment %} {{ object.matricula |default_if_none:"No posee"}}{% endcomment %}
+<!--    <p>Profesion: {{ object.profesion}}</p>-->
+<p><strong>Especialidad:</strong> {{ object.especialidad}}</p>
+
+<p><strong>Activo:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</p>
+<p><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</p>
+
+{% endblock %}

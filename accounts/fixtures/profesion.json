@@ -1,0 +1,321 @@
+[
+  {
+    "model": "accounts.Profesion",
+    "pk": 1,
+    "fields": {
+            "name": "abogacia",
+            "abbreviation": "dr"
+    }
+  },
+
+  {
+    "model": "accounts.Profesion",
+    "pk": 2,
+    "fields": {
+            "name": "medicina",
+            "abbreviation": "doc"
+    }
+  },
+
+  {
+    "model": "accounts.Profesion",
+    "pk": 3,
+    "fields": {
+              "name": "ingenieria",
+              "abbreviation": "ing"
+    }
+  },
+
+  {
+    "model": "accounts.Profesion",
+    "pk": 6,
+    "fields": {
+                "name": "licenciado",
+                "abbreviation": "lic"
+    }
+  },
+
+  {
+    "model": "accounts.Profesion",
+    "pk": 5,
+    "fields": {
+                "name": "profesor",
+                "abbreviation": "profe"
+    }
+  },
+
+    {
+    "model": "accounts.Profesion",
+    "pk": 4,
+    "fields": {
+                "name": "arquitectura",
+                "abbreviation": "arq"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Penal"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Comercial"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2, 
+        "name": "Cardiologia"
+    }
+  },
+  
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2, 
+        "name": "Clinico"
+    }
+  },
+  
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2, 
+        "name": "Kinesiologo"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Genetica"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Psiquitria"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Renal"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Nutricion"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Dermatologia"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 2,
+        "name": "Pediatra"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3, 
+        "name": "Sistemas de Informacion"
+    }
+  },
+  
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3, 
+        "name": "Electromecanica"
+    }
+  },
+  
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3, 
+        "name": "Civil"
+    }
+  },
+  
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3, 
+        "name": "Quimica"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Pesquera"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Naval"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Industria Automotriz"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Nuclear"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Biotecnologia"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Telecomunicaciones"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Mecatronica"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 3,
+        "name": "Industrial"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Derecho Laboral"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Derecho de Familia"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Derecho Civil"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Defensa del Consumidor"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 1,
+        "name": "Accidentes Viales"
+    }
+  },
+
+   {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 4,
+        "name": "Edificación Residencial"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 4,
+        "name": "Urbanismo"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 4,
+        "name": "Diseño y Ejecucion de Piscinas"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 4,
+        "name": "Feng Shui"
+    }
+  },
+
+  {
+    "model": "accounts.Especialidad",
+    "fields": {
+        "profesion": 4,
+        "name": "Diseño CAD"
+    }
+  }
+
+
+]
