@@ -30,11 +30,11 @@ PROVINCIA = [
 
 
 class TimeStampedModel(models.Model):
-    creado = models.DateTimeField(auto_now_add=True, verbose_name='creado',
-                                  help_text='fecha de creacion')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='creado',
+                                   help_text='fecha de creacion')
 
-    modificado = models.DateTimeField(auto_now=True,verbose_name='modificado',
-                                      help_text='fecha de modificacion')
+    modified = models.DateTimeField(auto_now=True, verbose_name='modificado',
+                                    help_text='fecha de modificacion')
 
     class Meta:
         abstract = True
