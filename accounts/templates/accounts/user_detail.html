@@ -1,6 +1,6 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Detalle del Profesional{% endblock title %}
 
 {% block content %}
@@ -25,5 +25,28 @@
 
 <p><strong>Activo:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</p>
 <p><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</p>
+
+
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">@{{ object.username }}</strong>
+          <h3 class="mb-0">{{ object.get_full_name | title }}<i>{{ object.bio |default:" (sin bio)" }}</i></h3>
+          <div class="mb-1 text-muted">Miembro desde: {{ object.date_joined | date:" N Y" }}</div>
+          <p class="card-text mb-auto"><strong>Matricula verificada <img width="25" height="25" src="https://postfity.com/wp-content/uploads/2018/10/insta-ver-sign.jpg"/></strong></p>
+          <p class="card-text mb-auto"><strong>Profesion:</strong> Medicina</p>
+          <p class="card-text mb-auto"><strong>Especialidad:</strong> Cirujano</p>
+          <a href="#" class="stretched-link">Ver datos de contacto</a>
+        </div>
+        <div class="col-auto ">
+          <img class="bd-placeholder-img" width="200" height="250" src="{% static 'images/campeon.jpg' %}" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/>
+          </img>
+
+        </div>
+      </div>
+    </div>
+    </div>
 
 {% endblock %}

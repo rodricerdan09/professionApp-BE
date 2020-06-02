@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Buscar un Profesional</a>
+              <a class="nav-link" href="#">Buscar un Servicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>
@@ -57,3 +57,12 @@
 </div>
 </nav>
 
+<nav>
+    <ul class="nav justify-content-center">
+        {% for profesion in profesiones %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'especialidad-list' profesion %}">{{profesion.name |title }}"</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

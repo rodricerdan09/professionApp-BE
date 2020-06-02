@@ -18,8 +18,16 @@
           <div class="card-body">
             <h5 class="card-title">{{ profesion | title }}</h5>
             <p class="card-text">Profesionales registrados: 999</p>
-            <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn" role="button">Ver especialidades ({{profesion.count_esp}})</a>
+
+              <div>
+                <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Especialidades ({{profesion.count_esp}})</a>
+            </div>
+              <br>
+            <div>
+                <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Ver profesionales ({{profesion.count_esp}})</a>
+            </div>
           </div>
+
         </div>
 
         {%else%}
