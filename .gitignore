@@ -1,0 +1,8 @@
+*.pyc
+*~
+*migrations
+__pycache__
+venv
+.idea
+db.sqlite3
+/~$der.xlsx
