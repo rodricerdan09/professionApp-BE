@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Entidad, Solicitud
+from .models import Entidad
+# Solicitud
 
 
 @admin.register(Entidad)
@@ -12,11 +13,11 @@ class AdminEntidad(admin.ModelAdmin):
         model = Entidad
 
 
-@admin.register(Solicitud)
-class AdminSolicitud(admin.ModelAdmin):
-    list_display = ['__str__', 'profesional', 'entidad']
-    list_filter = ['entidad']
-    fields = ['profesional', 'entidad']
-
-    class Meta:
-        model = Solicitud
+# @admin.register(Solicitud)
+# class AdminSolicitud(admin.ModelAdmin):
+#     list_display = ['__str__', 'profesional', 'entidad']
+#     list_filter = ['entidad']
+#     fields = ['profesional', 'entidad']
+#
+#     class Meta:
+#         model = Solicitud

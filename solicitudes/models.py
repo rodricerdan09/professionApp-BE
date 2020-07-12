@@ -27,18 +27,18 @@ class Entidad(models.Model):
         verbose_name_plural = "entidades"
 
 
-class Solicitud(models.Model):
-    entidad = models.ForeignKey(Entidad, on_delete=models.DO_NOTHING)
-    profesional = models.ForeignKey('usuarios.Profesional', on_delete=models.DO_NOTHING)
-    autorizado = models.BooleanField(default=False)
-    autorizado_por = models.ForeignKey('usuarios.UsuarioErp',
-                                       blank=True, null=True,
-                                       on_delete=models.DO_NOTHING)
-    autorizado_fecha = models.DateTimeField()
-
-    def __str__(self):
-        return f"Solitud nro: {self.id}"
-
-    class Meta:
-        verbose_name = "solicitud"
-        verbose_name_plural = "solicitudes"
+# class Solicitud(models.Model):
+#     entidad = models.ForeignKey(Entidad, on_delete=models.DO_NOTHING)
+#     profesional = models.ForeignKey('usuarios.Profesional', on_delete=models.DO_NOTHING)
+#     autorizado = models.BooleanField(default=False)
+#     autorizado_por = models.ForeignKey('usuarios.UsuarioErp',
+#                                        blank=True, null=True,
+#                                        on_delete=models.DO_NOTHING)
+#     autorizado_fecha = models.DateTimeField(blank=True, null=True)
+#
+#     def __str__(self):
+#         return f"Solitud nro: {self.id}"
+#
+#     class Meta:
+#         verbose_name = "solicitud"
+#         verbose_name_plural = "solicitudes"
