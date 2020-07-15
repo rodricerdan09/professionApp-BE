@@ -37,3 +37,4 @@ class UsuarioErp(Usuario):
 
 # TODO definir el tema de los permisos, que grupos voy a tener ?
 # TODO cambiar el nombre de las tablas usando "db_table = 'nombresingular'"
+# TODO el profesional se relacion con profesion y especialidad o solo especialidad ?
