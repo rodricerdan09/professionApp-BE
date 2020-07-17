@@ -1,21 +1,26 @@
 from django.db import models
 
-PROVINCIA = [
-    (1, "Chaco"),
-    (2, "Corrientes"),
-    (3, "Formosa"),
-    (4, "Misiones"),
-]
-
 # TODO buscar el nombre de las entidades de chaco corrientes formosa
 # TODO armar json para carga de entidades
 
 
 class Entidad(models.Model):
+    CHACO = 1
+    CORRIENTES = 2
+    FORMOSA = 3
+    MISIONES = 4
+
+    PROVINCIA_CHOICES = [
+        (CHACO, "Chaco"),
+        (CORRIENTES, "Corrientes"),
+        (FORMOSA, "Formosa"),
+        (MISIONES, "Misiones"),
+    ]
+
     nombre = models.CharField(max_length=50)
     provincia = models.PositiveSmallIntegerField(blank=False,
                                                  null=True,
-                                                 choices=PROVINCIA,
+                                                 choices=PROVINCIA_CHOICES,
                                                  default=1
                                                  )
 

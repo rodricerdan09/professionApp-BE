@@ -3,7 +3,7 @@ from .views import entidad_detail, entidad_list
 
 urlpatterns = [
     path('entidades/', entidad_list),
-    path('entidades/<int:pk>', entidad_detail),
+    path('entidad/<int:pk>', entidad_detail),
 ]
 
 
