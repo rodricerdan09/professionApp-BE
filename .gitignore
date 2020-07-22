@@ -7,3 +7,4 @@ venv
 db.sqlite3
 /~$der.xlsx
 der.xlsx
+/http-client.private.env.json
