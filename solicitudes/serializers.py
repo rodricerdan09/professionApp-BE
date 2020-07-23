@@ -17,7 +17,12 @@ from .models import Entidad
 
 
 class EntidadSerializer(serializers.ModelSerializer):
+    # provincia = serializers.CharField(source='get_provincia_display')
 
     class Meta:
         model = Entidad
-        fields = ('id', 'nombre', 'provincia')
+        fields = (
+            'id',
+            'nombre',
+            'provincia',
+        )

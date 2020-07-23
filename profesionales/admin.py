@@ -4,7 +4,7 @@ from .models import Especialidad, Profesion
 
 @admin.register(Profesion)
 class AdminProfesion(admin.ModelAdmin):
-    list_display = ['nombre', 'count_esp', 'count_entidad']  # es lo que se muestra en la grilla
+    list_display = ['id', 'nombre', 'count_esp', 'count_entidad']  # es lo que se muestra en la grilla
     ordering = ('nombre',)
 
     def count_entidad(self, obj):
