@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title="ProfessionApp API")
 
 urlpatterns = [
+    path('', schema_view, name='swagger_ui'),
     path('admin/', admin.site.urls),
     path('api/', include('solicitudes.urls', namespace='solicitudes')),
-    path('api/', include('profesionales.urls', namespace='profesionales'))
+    path('api/', include('profesionales.urls', namespace='profesionales')),
+    # para poder utilizar el login desde swagger
+    path('accounts/', include('rest_framework.urls'))
 ]

@@ -4,18 +4,24 @@ from .models import Profesion, Especialidad
 
 
 class ProfesionList(generics.ListAPIView):
+    """
+    Retorna un listado de todas las profesiones
+    """
     queryset = Profesion.objects.all()
     serializer_class = ProfesionSerializer
 
 
 class ProfesionDetail(generics.RetrieveAPIView):
+    """
+    Retorna los detalles de una profesion
+    """
     queryset = Profesion.objects.all()
     serializer_class = ProfesionSerializer
 
 
 class EspecialidadList(generics.ListAPIView):
     """
-        sirve para la url api/profesion/2/especialidad
+    Retorna todas las Especialidades de una Profesion
     """
 
     def get_queryset(self):
@@ -26,7 +32,7 @@ class EspecialidadList(generics.ListAPIView):
 
 class ProfesionEspecialidadDetail(generics.RetrieveAPIView):
     """
-    sirve para la url api/profesion/2/especialidad/4
+    Retorna los detalles de una Especialdiad a partir de una Profesion
     """
     # queryset = Especialidad.objects.all()
     def get_queryset(self):
@@ -36,8 +42,8 @@ class ProfesionEspecialidadDetail(generics.RetrieveAPIView):
 
 
 class EspecialidadDetail(generics.RetrieveAPIView):
-    """"
-    sirve para la url api/especialidad/6
+    """
+    Retorna los detalles de una Especialidad
     """
     queryset = Especialidad.objects.all()
     serializer_class = EspecialidadSerializer

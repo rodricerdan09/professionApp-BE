@@ -8,6 +8,12 @@ from .serializers import EntidadSerializer
 
 @api_view(['GET', 'POST'])
 def entidad_list(request):
+    """
+    Retorna un listado de todas las Entidades
+    :param request: POST
+    :param pk:
+    :return:
+    """
     if request.method == 'GET':
         entidades = Entidad.objects.all()
         entidades_serializer = EntidadSerializer(entidades, many=True)
@@ -25,6 +31,9 @@ def entidad_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def entidad_detail(request, pk):
+    """
+    Retorna los detalles de una Entidad
+    """
     try:
         entidad = Entidad.objects.get(pk=pk)
     except Entidad.DoesNotExist:

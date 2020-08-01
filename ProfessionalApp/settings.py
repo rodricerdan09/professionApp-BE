@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     # app externas
     # Django REST framework
     'rest_framework',
+    # Django REST Swagger
+    'rest_framework_swagger',
     # mis appps
     'usuarios.apps.UsuariosConfig',
     'profesionales.apps.ProfesionalesConfig',
@@ -106,6 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# agregado para que funcione swagger
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 
 
 # Internationalization
