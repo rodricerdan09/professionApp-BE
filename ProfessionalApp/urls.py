@@ -20,7 +20,7 @@ from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title="ProfessionApp API")
 
 urlpatterns = [
-    path('', schema_view, name='swagger_ui'),
+    path('api_doc/', schema_view, name='swagger_ui'),
     path('admin/', admin.site.urls),
     path('api/', include('solicitudes.urls', namespace='solicitudes')),
     path('api/', include('profesionales.urls', namespace='profesionales')),
