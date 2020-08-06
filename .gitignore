@@ -1,0 +1,9 @@
+*.pyc
+*~
+*migrations
+__pycache__
+venv
+.idea
+/~$der.xlsx
+der.xlsx
+/http-client.private.env.json

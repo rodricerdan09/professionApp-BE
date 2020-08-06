@@ -1,0 +1,40 @@
+django-admin startproject ProfessionalApp .
+
+python manage.py startapp usuarios
+python manage.py startapp profesionales
+python manage.py startapp solicitudes
+python manage.py startapp denuncias
+
+python manage.py migrate
+python manage.py createsuperuser
+
+LANGUAGE_CODE = 'es-AR'
+
+TIME_ZONE: 'America/Argentina/Buenos_Aires'
+
+
+'usuarios.apps.UsuariosConfig',
+'profesionales.apps.ProfesionalesConfig',
+'solicitudes.apps.SolicitudesConfig',
+
+
+defini 3 aplicaciones en Django
+Usuarios
+Profesionales
+Solicitudes
+
+quien se relaciona con la Entidad ?
+la profesion ?
+el profesional ?
+
+order para las migraciones: tengo un problema por un llamado circular entre los modelos
+
+comentar la linea donde este 'entidad' del AdminUsuarioErp
+comento "entidad" del modelo Profesion
+--> makemigrations profesionales
+
+
+comento  el atributo 'entidad' de UsuarioErp
+--> makemigrations usuarios
+
+--> makemigrations solicitudes
