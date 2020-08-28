@@ -6,27 +6,38 @@
 {% block content %}
 
 
-<h2>Mi Cuenta</h2>
-<p><strong>Bienvenido:</strong> {{ object.get_full_name | title }}<i>{{ object.bio |default:" (sin bio)" }}</i>
-{% comment %} <i>({{ object.bio|default_if_none:"sin bio"}})</i> {% endcomment %}
-<p><strong>Usuario:</strong> {{ object.username }}</p>
-<p><strong>Dni:</strong> {{ object.dni }}</p>
-<p><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</p>
-<p><strong>Direccion:</strong> {{ object.direccion }}</p>
-<p><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</p>
-<p><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</p>
-
-<p><strong>Email:</strong> {{ object.email }}</p>
-<p><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </p>
-<p><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</p>
-{% comment %} {{ object.matricula |default_if_none:"No posee"}}{% endcomment %}
-<!--    <p>Profesion: {{ object.profesion}}</p>-->
-<p><strong>Especialidad:</strong> {{ object.especialidad}}</p>
-
-<p><strong>Activo:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</p>
-<p><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</p>
+<h2>Mi Datos</h2>
 
 
+<div class="card" style="width:75%;">
+  <div class="card-body">
+        <h4><strong>Bienvenido </strong> {{ object.get_full_name | title }}<i>{{ object.bio |default:" (sin bio)" }}</i></h4>
+
+        {% comment %} <i>({{ object.bio|default_if_none:"sin bio"}})</i> {% endcomment %}
+        <li><strong>Usuario:</strong> {{ object.username }}</li>
+        <li><strong>Dni:</strong> {{ object.dni }}</li>
+        <li><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</li>
+        <li><strong>Direccion:</strong> {{ object.direccion }}</li>
+        <li><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</li>
+        <li><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</li>
+        <li><strong>Email:</strong> {{ object.email }}</li>
+        <li><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </li>
+        <li><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</li>
+        {% comment %} {{ object.matricula |default_if_none:"No posee"}}{% endcomment %}
+        <!--    <p>Profesion: {{ object.profesion}}</p>-->
+        <li><strong>Especialidad:</strong> {{ object.especialidad}}</li>
+
+        <li><strong>Activo:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</li>
+        <li><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</li>
+  </div>
+</div>
+ {% comment %}
+{{user.get_short_name}}{{ user.get_username}}
+   <li>No existen Especialidades en {{ request.path }}</li>
+   <li>No existen Especialidades en {{ request.get_full_path.url }}</li>
+   <li>No existen Especialidades en {{ request.build_absolute_uri }}</li>
+   <li>No existen Especialidades en {{ context }}</li>
+{% endcomment %}
 
   <div class="row mb-2">
     <div class="col-md-6">
@@ -42,7 +53,6 @@
         </div>
         <div class="col-auto ">
           <img class="bd-placeholder-img" width="200" height="250" src="{% static 'images/campeon.jpg' %}" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/>
-          </img>
 
         </div>
       </div>

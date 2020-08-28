@@ -1,0 +1,37 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Borrar cuenta{% endblock title %}
+
+{% block content %}
+
+<div class="card" style="width:80%;">
+    <div class="card-header"> <h3>Eliminar mi cuenta</h3> </div>
+  <div class="card-body">
+       <form method="post">{% csrf_token %}
+           <p>{{ object.first_name | title }} si crees que no vas a utilizar mas ProfessionApp y quieres eliminar tu cuenta podemos ayudarte.</p>
+           <p>¿Qué ocurre si elimino mi cuenta de ProfessionApp definitivamente?</p>
+           <ul>
+               <li>No podrás volver a activar tu cuenta.</li>
+               <li>No podrás ver tus datos.</li>
+               <li>No podrás hacer muchos cosas copadas</li>
+           </ul>
+           <p>Si realmente quieres que se elimine tu cuenta, haz click en el boton "Eliminar mi cuenta"</p>
+             <div class="card-footer">
+                 <div class="row">
+                     <small class="text-muted">
+                        Si lo desea puede <a class="ml-2" href="{% url 'desactivar' user.id %}">desactivar su cuenta</a>
+                    </small>
+                     
+                     <div class="col text-right">
+                         <input class="btn btn-danger ml-2" type="submit" value="Eliminar mi cuenta">
+                        <input class="btn btn-secondary ml-2"type="submit" name="cancel" value="Cancel" />
+                     </div>
+                </div>
+            </div>
+
+        </form>
+  </div>
+</div>
+{% endblock %}

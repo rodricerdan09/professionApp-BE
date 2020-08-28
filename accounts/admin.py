@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profesion, Especialidad
+from .models import Profesion, Especialidad, Profesional
 
 
 class InLineEspecialidad(admin.StackedInline):
@@ -31,4 +31,6 @@ class AdminEspecialidad(admin.ModelAdmin):
         model = Especialidad
 
 
-admin.site.site_header = "ProfessionalApp Dashborad"
+admin.site.site_header = "ProfessionalApp | Administrador"
+admin.site.index_title = "ProfessionalApp | Admin Dashboard"
+admin.site.register(Profesional)

@@ -73,3 +73,17 @@ class Especialidad(models.Model):
 
     def __str__(self):
         return f"{self.profesion}: {self.name}"
+
+
+class Profesional(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.DO_NOTHING)
+    email_prof = models.EmailField(unique=True, blank=False, null=False)
+    matricula = models.IntegerField(default=0)
+    servicio = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ["usuario__last_name"]
+        verbose_name_plural = "Profesionales"
+
+    def __str__(self):
+        return f"{self.usuario.last_name},{self.usuario.first_name} - Matricula: {self.matricula}"
