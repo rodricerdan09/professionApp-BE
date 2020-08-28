@@ -80,6 +80,8 @@ class UserDesactivarCuentaView(LoginRequiredMixin, UpdateView):
             user.is_active = False
             user.save()
             nombre = user.get_username()
+            mensaje = f'@{nombre}, tu cuenta ha sido desactivada.\n ' \
+                      f'Para activarla nuevamente comunicarse con info@professionap.com'
             logout(request)
-            messages.warning(request, f'@{nombre}, su cuenta ha sido desactivada')
+            messages.warning(request, mensaje)
             return HttpResponseRedirect(url)
