@@ -61,14 +61,16 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
             url = self.success_url
             return HttpResponseRedirect(url)
         else:
-            messages.error(request, 'Su cuenta ha sido eliminada')
+            user = request.user
+            nombre = user.get_username()
+            messages.error(request, f'@{nombre} eliminaste tu cuenta. Te vamos a extrañar :(')
             return super(UserDeleteView, self).post(request, *args, **kwargs)
 
 
 class UserDesactivarCuentaView(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ('last_name', 'first_name', 'email')
-    template_name = 'accounts/user_update.html'
+    fields = ('is_active',)
+    template_name = 'accounts/user_desactivar.html'
     success_url = reverse_lazy('home')
 
     def post(self, request, *args, **kwargs):
