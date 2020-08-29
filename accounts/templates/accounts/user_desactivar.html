@@ -1,0 +1,35 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Desactivar cuenta{% endblock title %}
+
+{% block content %}
+
+<div class="card" style="width:80%;">
+    <div class="card-header"> <h3>Desactivar Cuenta</h3> </div>
+  <div class="card-body">
+       <form method="post">{% csrf_token %}
+           <p>{{ object.first_name | title }} si crees no vas a utilizar ProfessionApp por un tiempo y no quieres eliminar tu cuenta podemos ayudarte.</p>
+           <p>¿Qué ocurre si desactivo mi cuenta de ProfessionApp?</p>
+           <ul>
+               <li>Tus datos se mantendran en ProfessionApp.</li>
+               <li>Te esperamos cuando quieras volver =D</li>
+               <li>Solamente nos avisas por email para reactivar tu cuenta </li>
+           </ul>
+
+             <div class="card-footer">
+                 <div class="row">
+                     <small class="text-muted">Como dijo Apu: <i>"Gracias vuelva pronto"</i></small>
+
+                     <div class="col text-right">
+                         <input class="btn btn-warning ml-2" type="submit" value="Desactivar ahora">
+                         <input class="btn btn-secondary ml-2"type="submit" name="cancel" value="Cancelar" />
+                     </div>
+                </div>
+            </div>
+
+        </form>
+  </div>
+</div>
+{% endblock %}
