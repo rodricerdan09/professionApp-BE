@@ -1,4 +1,10 @@
- <ul class="navbar-nav ml-auto">
+<ul class="right hide-on-med-and-down">
+    <li><a href="{% url 'home' %}" class="waves-effect waves-light btn"><i class="material-icons left">account_circle</i>{{ user.get_username }}</a></li>
+</ul>
+
+
+
+<ul class="navbar-nav ml-auto">
      <div class="btn-group" role="group">
          <button id="btnGroupDrop1" type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

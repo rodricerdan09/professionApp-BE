@@ -1,47 +1,47 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Profesiones{% endblock title %}
-
 {% block content %}
 
 {%if object_list%}
 
-<center><h2>Total de Profesiones registradas: {{object_list | length}}</h2></center>
+<center><h3>Profesiones registradas: {{object_list | length}}</h3></center>
 <br>
 
-<div class="row">
-   {% for profesion in object_list %}
 
-    <div class="col-sm-4">
-        {%if profesion.count_esp > 0 %}
-        <div class="card border-info mb-3">
-          <div class="card-body">
-            <h5 class="card-title">{{ profesion | title }}</h5>
-            <p class="card-text">Profesionales registrados: 999</p>
+  <div class="row">
+      {% for profesion in object_list %}
+        <div class="col s12 m6">
+            {%if profesion.count_esp > 0 %}
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ profesion | title }}</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
 
-              <div>
-                <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Especialidades ({{profesion.count_esp}})</a>
-            </div>
-              <br>
-            <div>
-                <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Ver profesionales ({{profesion.count_esp}})</a>
-            </div>
-          </div>
+                    <div class="card-action">
+                        <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Especialidades ({{profesion.count_esp}})</a>
+                        <a href="" class="btn btn-info btn-sm" role="button">Ver profesionales (0)</a>
+                    </div>
+                </div>
 
+            {% else %}
+                 <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ profesion | title }}</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.</p>
+
+                    </div>
+
+                    <div class="card-action">
+                        <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn-sm" role="button">Especialidades ({{profesion.count_esp}})</a>
+                        <a href="" class="btn btn-info btn-sm disabled" role="button">Ver profesionales (0)</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
-
-        {%else%}
-            <div class="card border-seconday mb-3">
-              <div class="card-body">
-                <h5 class="card-title">{{ profesion | title }}</h5>
-                <p class="card-text">Cantidad de profesionales: ninguno :(</p>
-                <a href="#" class="btn btn-secondary btn disabled" role="button" aria-disabled="true">Ver especialidades ({{profesion.count_esp}})</a>
-              </div>
-            </div>
-
-        {%endif%}
-    </div>
-    {% endfor %}
+      {% endfor %}
+  </div>
 
 </div><br>
 

@@ -8,6 +8,6 @@ urlpatterns = [
     path('misdatos/<slug:username>', UserDetailView.as_view(), name='user-detail'),
     path('misdatos/actualizar/<int:pk>', UserUpdateView.as_view(), name='user-update'),
     path('misdatos/borrar/<int:pk>', UserDeleteView.as_view(), name='user-delete'),
-    path('misdatos/desactivar/<int:pk>', UserDesactivarCuentaView.as_view(), name='desactivar')
+    path('misdatos/desactivar/<int:pk>', UserDesactivarCuentaView.as_view(), name='user-desactivar')
 
 ]

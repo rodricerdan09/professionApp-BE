@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
-
 {% block title %}Especialidades{% endblock title %}
-
 {% block content %}
-
 {%if object_list%}
 
 {% with object_list|first as first_object %}
@@ -14,49 +11,39 @@
 <br>
 
 
-<div class="row">
-   {% for profesion in object_list %}
+  <div class="row">
+      {% for especialidad in object_list %}
+        <div class="col s12 m6">
+            {%if especialidad.count_esp > 0 %}
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ especialidad.name | title }}</span>
+                        <p>Detalle de '{{ especialidad.name | title }}'</p>
+                    </div>
 
-    <div class="col-sm-4">
-        {%if profesion.count_esp > 0 %}
-        <div class="card border-info mb-3">
-          <div class="card-body">
-            <h5 class="card-title">{{ profesion.name | title }}</h5>
-            <p class="card-text">Cantidad de profesionales: .</p>
-            <a href="{% url 'especialidad-list' profesion %}" class="btn btn-info btn" role="button">
-                Ver profesionales ({{profesion.count_esp}})
-            </a>
-          </div>
+                    <div class="card-action">
+                        <a href="" class="btn btn-info btn-sm" role="button">Ver profesionales (??)</a>
+                    </div>
+                </div>
+
+            {% else %}
+                 <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ especialidad.name | title }}</span>
+                        <p>Detalle de '{{ especialidad.name | title }}'</p>
+
+                    </div>
+
+                    <div class="card-action">
+                        <a href="" class="btn btn-info btn-sm disabled" role="button">Ver profesionales (0)</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
-
-        {%else%}
-            <div class="card border-seconday mb-3">
-              <div class="card-body">
-                <h5 class="card-title">{{ profesion.name | title }}</h5>
-                <p class="card-text">Cantidad de profesionales: .</p>
-                <a href="#" class="btn btn-secondary btn disabled" role="button" aria-disabled="true">
-                    Ver profesionales: ninguno  =(
-                </a>
-              </div>
-            </div>
-
-        {%endif%}
-    </div>
-    {% endfor %}
+      {% endfor %}
+  </div>
 
 </div><br>
-{% comment %}
-    {% for profesion in object_list %}
-        <li>{{ profesion.name |title}}</li>
-    {% empty %}
-        <li>No existen Especialidades en {{ request.path }}</li>
-        <li>No existen Especialidades en {{ request.get_full_path }}</li>
-        <li>No existen Especialidades en {{ request.build_absolute_uri }}</li>
-        <li>No existen Especialidades en {{ context }}</li>
-    {% endfor %}
-{% endcomment %}
-
-
 
 {%else%}
     <center><h2>No tenemos especialidades aqui :(</h2></center>

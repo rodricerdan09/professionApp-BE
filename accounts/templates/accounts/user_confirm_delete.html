@@ -21,12 +21,12 @@
              <div class="card-footer">
                  <div class="row">
                      <small class="text-muted">
-                        Si lo desea puede<a class="ml-2" href="{% url 'desactivar' user.id %}">desactivar su cuenta</a>
+                        Si lo desea puede<a class="ml-2" href="{% url 'user-desactivar' user.id %}">desactivar su cuenta</a>
                     </small>
                      
                      <div class="col text-right">
                          <input class="btn btn-danger ml-2" type="submit" value="Eliminar mi cuenta">
-                        <input class="btn btn-secondary ml-2"type="submit" name="cancel" value="Cancel" />
+                        <input class="btn btn-secondary ml-2"type="submit" name="cancel" value="Cancelar" />
                      </div>
                 </div>
             </div>

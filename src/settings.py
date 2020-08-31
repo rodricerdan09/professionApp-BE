@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'crispy_forms',
+    # 'material.theme.deeppurple',
+    'material',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -139,9 +143,9 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: "/cuenta/misdatos/%s" % u.username,
 }
 
-from django.contrib.messages import constants as message_constants
+
 MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
                 message_constants.INFO: 'info',
                 message_constants.SUCCESS: 'success',
                 message_constants.WARNING: 'warning',
-                message_constants.ERROR: 'danger',}
+                message_constants.ERROR: 'danger', }
