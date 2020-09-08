@@ -1,34 +1,41 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Detalle del Profesional{% endblock title %}
+{% block title %}Detalle de la cuenta{% endblock title %}
 
 {% block content %}
 
-
-<h2>Mi Datos</h2>
-
-
+<h2><strong>Bienvenido </strong> @{{ object.username | title }}<i></i></h2>
 <div class="card" style="width:75%;">
   <div class="card-body">
-        <h4><strong>Bienvenido </strong> {{ object.get_full_name | title }}<i>{{ object.bio |default:" (sin bio)" }}</i></h4>
+    <h5 class="card-title">Mis datos</h5>
 
-        {% comment %} <i>({{ object.bio|default_if_none:"sin bio"}})</i> {% endcomment %}
-        <li><strong>Usuario:</strong> {{ object.username }}</li>
-        <li><strong>Dni:</strong> {{ object.dni }}</li>
-        <li><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</li>
-        <li><strong>Direccion:</strong> {{ object.direccion }}</li>
-        <li><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</li>
-        <li><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</li>
-        <li><strong>Email:</strong> {{ object.email }}</li>
-        <li><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </li>
-        <li><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</li>
-        {% comment %} {{ object.matricula |default_if_none:"No posee"}}{% endcomment %}
-        <!--    <p>Profesion: {{ object.profesion}}</p>-->
-        <li><strong>Especialidad:</strong> {{ object.especialidad}}</li>
+      <ul class="list-group">
+          <li class="list-group-item"><strong>Apellido/s:</strong> {{ object.last_name | title }}</li>
+          <li class="list-group-item"><strong>Nombre/s:</strong> {{ object.first_name | title}}</li>
+          <li class="list-group-item"><strong>Usuario:</strong> {{ object.username }}</li>
+          <li class="list-group-item"><strong>Email:</strong> {{ object.email }}</li>
+          <li class="list-group-item"><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</li>
+          <li class="list-group-item"><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</li>
+          <li class="list-group-item"><strong>Cuenta Activa:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</li>
+      </ul>
+      {% comment %}
+            {{ object.bio |default:" (sin bio)" }}
 
-        <li><strong>Activo:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</li>
-        <li><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</li>
+            <i>({{ object.bio|default_if_none:"sin bio"}})</i>
+
+            <li><strong>Dni:</strong> {{ object.dni }}</li>
+            <li><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</li>
+            <li><strong>Direccion:</strong> {{ object.direccion }}</li>
+
+            <li><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </li>
+            <li><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</li>
+            {{ object.matricula |default_if_none:"No posee"}}
+            <!--    <p>Profesion: {{ object.profesion}}</p>-->
+            <li><strong>Especialidad:</strong> {{ object.especialidad}}</li>
+            <li><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</li>
+        {% endcomment %}
+
   </div>
 </div>
  {% comment %}
@@ -37,7 +44,7 @@
    <li>No existen Especialidades en {{ request.get_full_path.url }}</li>
    <li>No existen Especialidades en {{ request.build_absolute_uri }}</li>
    <li>No existen Especialidades en {{ context }}</li>
-{% endcomment %}
+
 
   <div class="row mb-2">
     <div class="col-md-6">
@@ -58,5 +65,5 @@
       </div>
     </div>
     </div>
-
+{% endcomment %}
 {% endblock %}

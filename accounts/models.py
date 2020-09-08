@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 
 PROVINCIA = [
     (1, "Buenos Aires"),
@@ -76,14 +78,20 @@ class Especialidad(models.Model):
 
 
 class Profesional(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.DO_NOTHING)
-    email_prof = models.EmailField(unique=True, blank=False, null=False)
-    matricula = models.IntegerField(default=0)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    matricula = models.IntegerField(default=0, blank=True, null=True)
+    profesion = models.ForeignKey(Profesion, on_delete=models.DO_NOTHING)
     servicio = models.TextField(blank=True, null=True)
+    website_url = models.URLField("Sitio Web", blank=True, null=True)
+    facebook_url = models.URLField("Facebook", blank=True, null=True)
+    instagram_url = models.URLField("Instragram", blank=True, null=True)
 
     class Meta:
         ordering = ["usuario__last_name"]
         verbose_name_plural = "Profesionales"
 
     def __str__(self):
-        return f"{self.usuario.last_name},{self.usuario.first_name} - Matricula: {self.matricula}"
+        return f"{self.usuario.last_name},{self.usuario.first_name}"
+
+    def get_absolute_url(self):
+        return reverse('home')

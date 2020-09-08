@@ -22,21 +22,21 @@
 
   <div class="jumbotron">
       <h1 class="display-4">Hola {{ user.first_name | title }}!</h1>
-      <p class="lead">Bienvenido a su cuenta de usuario. Aqui encontrará todos los necesario para administrar su cuenta</p>
+      <p class="lead">Bienvenido a tu cuenta de usuario. Aqui encontrará todos los necesario para administrar su cuenta</p>
       <hr class="my-4">
 
-      <a class="btn btn-info btn-lg" href="{% url 'user-detail' user.get_username %}" role="button">Ver mis datos</a>
       {% comment %}
-      {% if user.profesional %}
+        <a class="btn btn-info btn-lg" href="{% url 'user-detail' user.get_username %}" role="button">Ver mis datos</a>
+      {% endcomment %}
 
+      {% if user.profesional.id %}
           <p>Ya tiene su cuenta Profesional activada!.</p>
-          <a class="btn btn-primary btn-lg" href="#" role="button">Ir a mi Cuenta Profesional</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver mi Perfil Profesional</a>
         {% else %}
           <p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p>
-
-          <a class="btn btn-info btn-lg" href="#" role="button">Actualizar a Cuenta Profesional!</a>
+          <a class="btn btn-info btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
       {% endif %}
-      {% endcomment %}
+
 
   </div>
 {% else %}

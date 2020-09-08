@@ -31,6 +31,14 @@ class AdminEspecialidad(admin.ModelAdmin):
         model = Especialidad
 
 
+@admin.register(Profesional)
+class AdminEspecialidad(admin.ModelAdmin):
+    list_display = ['__str__', 'profesion', 'matricula']  # es lo que se muestra en la grilla
+    list_filter = ['profesion']  # filtro a la derecha
+
+    class Meta:
+        model = Profesional
+
+
 admin.site.site_header = "ProfessionalApp | Administrador"
 admin.site.index_title = "ProfessionalApp | Admin Dashboard"
-admin.site.register(Profesional)

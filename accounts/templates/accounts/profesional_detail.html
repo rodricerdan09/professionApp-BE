@@ -1,0 +1,39 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detalle del Profesional{% endblock title %}
+
+{% block content %}
+
+<h2><strong>Mi Perfil Profesional</strong></h2>
+
+<div class="card mb-2" style="max-width: 85%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% static 'images/campeon.jpg' %}" class="card-img rounded" alt="...">
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-body">
+          {% if object.matricula > 0 %}
+            <h3 class="card-title"><strong>{{ object.profesion.abbreviation | title }}. {{ user.get_full_name | title }} | Matricula: {{ object.matricula }}</strong></h3>
+          {% else %}
+          <h3 class="card-title"><strong>{{ object.profesion.abbreviation | title }}. {{ user.get_full_name | title }}</strong></h3>
+          {% endif %}
+            <p class="card-text mb-auto"><strong>Matricula verificada <img width="25" height="25" src="https://postfity.com/wp-content/uploads/2018/10/insta-ver-sign.jpg"/></strong></p>
+            <p class="small text-muted">
+                {% if object.website_url %}<a href="{{object.website_url}}"> Sitio Web | </a>{% endif  %}
+                {% if object.facebook_url %}<a href="{{object.facebook_url}}"> Facebook | </a>{% endif  %}
+                {% if object.instagram_url %}<a href="{{object.instagram_url}}"> Instagram | </a>{% endif  %}
+            </p>
+            <p class="card-text mb-auto"><strong>Profesion: </strong>{{ object.profesion | title }}</p>
+            <p class="card-text mb-auto"><strong>Email: </strong>{{ user.email }}</p>
+          <div class="mb-1 text-muted">Miembro desde: {{ user.date_joined | date:" N Y" }}</div>
+            <p class="card-text"><small class="text-muted"><strong>Ultima conexion:</strong> hace {{ user.last_login | timesince }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-info " href="{% url 'profesional-update' user.profesional.id  %}" role="button">Modificar</a>
+
+{% endblock %}

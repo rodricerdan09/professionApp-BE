@@ -1,0 +1,24 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Modificar datos{% endblock title %}
+
+{% block content %}
+
+<h2>Actualizar mis Datos</h2>
+<div class="card" style="width:75%;">
+  <div class="card-body">
+    <form method="post">{% csrf_token %}
+        {{ form.profesion|as_crispy_field }}
+        {{ form.matricula|as_crispy_field }}
+        {{ form.website_url|as_crispy_field }}
+        {{ form.facebook_url|as_crispy_field }}
+        {{ form.instagram_url|as_crispy_field }}
+        {{ form.servicio|as_crispy_field }}
+
+        <input class="btn btn-info ml-2" type="submit" value="Modificar">
+    </form>
+  </div>
+</div>
+{% endblock %}

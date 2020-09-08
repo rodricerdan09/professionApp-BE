@@ -3,11 +3,11 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
-from .models import Profesion, Especialidad
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+from .models import Profesion, Especialidad, Profesional
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from .forms import ProfileCreationForm
 
 class ProfesionListView(ListView):
     model = Profesion
@@ -87,3 +87,27 @@ class UserDesactivarCuentaView(LoginRequiredMixin, UpdateView):
             logout(request)
             messages.warning(request, mensaje)
             return HttpResponseRedirect(url)
+
+
+class CrearPerfilProfesional(CreateView):
+    model = Profesional
+    form_class = ProfileCreationForm
+    template_name = 'registration/crear_perfil.html'
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
+
+
+class ProfesionalDetailView(LoginRequiredMixin, DetailView):
+    model = Profesional
+    template_name = 'accounts/profesional_detail.html'
+
+
+class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
+    model = Profesional
+    fields = ('profesion', 'matricula', 'website_url', 'facebook_url', 'instagram_url', 'servicio')
+    template_name = 'accounts/profesional_update.html'
+
+    def get_absolute_url(self):
+        return reverse_lazy('profesional-detail', self.id)
