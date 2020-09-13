@@ -44,7 +44,8 @@ class TimeStampedModel(models.Model):
 
 class Profesion(models.Model):
     name = models.CharField(verbose_name="profesion", max_length=30)
-    imagen = models.ImageField("Imagen", upload_to="profesion/", null=True, blank=True, max_length=255)
+    imagen = models.ImageField("Imagen", upload_to="profesion/", default='profesion/diploma.jpg',
+                               null=True, blank=True, max_length=255)
     abbreviation = models.CharField(verbose_name="abreviatura", max_length=10)
 
     class Meta:

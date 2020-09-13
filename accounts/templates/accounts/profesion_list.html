@@ -1,17 +1,38 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Profesiones{% endblock title %}
-
 {% block content %}
 
 {%if object_list%}
 
-<center><h2>Total de Profesiones registradas: {{object_list | length}}</h2></center>
+<center><h2>Profesiones registradas: {{object_list | length}}</h2></center>
 <br>
 
 <div class="row">
    {% for profesion in object_list %}
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            {% if profesion.imagen %}
+                <img src="{{ profesion.imagen.url}}" class="card-img-top" >
+            {% else %}
 
+            {% endif %}
+
+            <div class="card-body">
+                <h5 class="card-title">{{profesion | title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Profesionales registrados: </h6>
+                <h6 class="card-subtitle mb-2 text-muted">Especialidades: ({{profesion.count_esp}}) </h6>
+                <p class="card-text">Detalle de {{profesion | title }}</p>
+            </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Profesionales registrados: </li>
+                <li class="list-group-item">Especialidades: ({{profesion.count_esp}}) </li>
+              </ul>
+        </div>
+        <br>
+    </div>
+
+    {% comment %}
     <div class="col-sm-4">
         {%if profesion.count_esp > 0 %}
         <div class="card border-info mb-3">
@@ -41,9 +62,10 @@
 
         {%endif%}
     </div>
+    {% endcomment %}
     {% endfor %}
-
-</div><br>
+</div>
+<br>
 
 {%else%}
     <center><h2><li>No existen Profesiones</h2></center></li>
