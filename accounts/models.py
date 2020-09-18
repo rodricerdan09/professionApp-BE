@@ -84,9 +84,13 @@ class Profesional(models.Model):
     matricula = models.IntegerField(default=0, blank=True, null=True)
     profesion = models.ForeignKey(Profesion, on_delete=models.DO_NOTHING)
     servicio = models.TextField(blank=True, null=True)
-    website_url = models.URLField("Sitio Web", blank=True, null=True)
-    facebook_url = models.URLField("Facebook", blank=True, null=True)
-    instagram_url = models.URLField("Instragram", blank=True, null=True)
+    website_url = models.CharField("Sitio Web", help_text="Ej: www.mipagina.com", max_length=255, blank=True, null=True)
+    facebook_url = models.CharField("Facebook",
+                                    help_text="Solamente el nombre de su cuenta. Ej: www.facebook.com/micuenta",
+                                    max_length=255, blank=True, null=True)
+    instagram_url = models.CharField("Instragram",
+                                     help_text="Solamente el nombre de su cuenta. Ej: www.instagram.com/micuenta",
+                                     max_length=255, blank=True, null=True)
 
     class Meta:
         ordering = ["usuario__last_name"]

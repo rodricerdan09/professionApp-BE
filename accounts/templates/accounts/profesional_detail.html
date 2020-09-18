@@ -22,13 +22,15 @@
           {% endif %}
             <p class="card-text mb-auto"><strong>Matricula verificada <img width="25" height="25" src="https://postfity.com/wp-content/uploads/2018/10/insta-ver-sign.jpg"/></strong></p>
             <p class="small text-muted">
-                {% if object.website_url %}<a href="{{object.website_url}}"> Sitio Web | </a>{% endif  %}
-                {% if object.facebook_url %}<a href="{{object.facebook_url}}"> Facebook | </a>{% endif  %}
-                {% if object.instagram_url %}<a href="{{object.instagram_url}}"> Instagram | </a>{% endif  %}
+                {% if object.website_url %}<a href="http://{{object.website_url}}"> Sitio Web |</a>{% endif  %}
+                {% if object.facebook_url %}<a href="http://www.facebook.com/{{object.facebook_url}}"> Facebook |</a>{% endif  %}
+                {% if object.instagram_url %}<a href="http://www.instagram.com/{{object.instagram_url}}"> Instagram |</a>{% endif  %}
             </p>
+
+
             <p class="card-text mb-auto"><strong>Profesion: </strong>{{ object.profesion | title }}</p>
             <p class="card-text mb-auto"><strong>Email: </strong>{{ user.email }}</p>
-          <div class="mb-1 text-muted">Miembro desde: {{ user.date_joined | date:" N Y" }}</div>
+            <div class="mb-1 text-muted">Miembro desde: {{ user.date_joined | date:" N Y" }}</div>
             <p class="card-text"><small class="text-muted"><strong>Ultima conexion:</strong> hace {{ user.last_login | timesince }}</small></p>
       </div>
     </div>
