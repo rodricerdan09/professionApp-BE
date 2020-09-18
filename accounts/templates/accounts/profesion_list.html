@@ -11,7 +11,7 @@
 <div class="row">
    {% for profesion in object_list %}
     <div class="col-sm-4">
-        <div class="card" style="width: 18rem;">
+        <div class="card" >
             {% if profesion.imagen %}
                 <img src="{{ profesion.imagen.url}}" class="card-img-top" >
             {% else %}
@@ -26,7 +26,9 @@
             </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Profesionales registrados: </li>
-                <li class="list-group-item">Especialidades: ({{profesion.count_esp}}) </li>
+                <li class="list-group-item">Especialidades: ({{profesion.count_esp}})
+                    <a href="{% url 'especialidad-list' profesion %}" role="button">Ver</a>
+                </li>
               </ul>
         </div>
         <br>
