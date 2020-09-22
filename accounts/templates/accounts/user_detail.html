@@ -11,9 +11,9 @@
     <h5 class="card-title">Mis datos</h5>
 
       <ul class="list-group">
+          <li class="list-group-item"><strong>Usuario:</strong> {{ object.username }}</li>
           <li class="list-group-item"><strong>Apellido/s:</strong> {{ object.last_name | title }}</li>
           <li class="list-group-item"><strong>Nombre/s:</strong> {{ object.first_name | title}}</li>
-          <li class="list-group-item"><strong>Usuario:</strong> {{ object.username }}</li>
           <li class="list-group-item"><strong>Email:</strong> {{ object.email }}</li>
           <li class="list-group-item"><strong>Miembro desde:</strong> {{ object.date_joined | date:" N Y" }}</li>
           <li class="list-group-item"><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</li>

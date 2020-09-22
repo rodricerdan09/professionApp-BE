@@ -1,7 +1,9 @@
+{% load static %}
  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
  <div class="container">
         <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">
-            <img src="https://seeklogo.com/images/R/raspberry-pi-logo-8240ABBDFE-seeklogo.com.png" width="30" height="30" class="d-inline-block align-top" alt="">ProfessionaApp
+<!--            <img src="https://seeklogo.com/images/R/raspberry-pi-logo-8240ABBDFE-seeklogo.com.png" width="30" height="30" class="d-inline-block align-top" alt="">ProfessionaApp-->
+            <img src= "{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">ProfessionaApp
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,9 +16,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Deshabilitado</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link disabled" href="#">Deshabilitado</a>-->
+<!--            </li>-->
 
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda</a>
