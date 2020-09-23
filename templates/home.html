@@ -23,7 +23,7 @@
 
   <div class="jumbotron">
       <h1 class="display-4">Hola {{ user.first_name | title }}!</h1>
-      <p class="lead">Bienvenido a tu cuenta de usuario. Aqui encontrará todos los necesario para administrar su cuenta</p>
+      <p class="lead">Bienvenido a tu cuenta. Aqui encontrará todos los necesario para administrarla</p>
       <hr class="my-4">
 
       {% comment %}
@@ -31,13 +31,20 @@
       {% endcomment %}
 
       {% if user.profesional.id %}
-          <p>Ya tiene su cuenta Profesional activada!.</p>
-          <a class="btn btn-primary btn-lg" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver mi Perfil Profesional</a>
+          <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
+          <a class="btn btn-primary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
+          <a class="btn btn-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
         {% else %}
-          <p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p>
+          <h3><p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p></h3>
           <a class="btn btn-info btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
-      {% endif %}
 
+      {% endif %}
+        <br>
+        <br>
+
+      <h3><p>Mis datos</p></h3>
+      <a class="btn btn-primary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
+      <a class="btn btn-primary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
 
   </div>
 {% else %}
@@ -60,7 +67,8 @@
     </div>
 
     <div class="carousel-item">
-        <img src="http://drive.google.com/uc?export=view&id=19_G2A4CktJ3tdGH6zriAyqNmPCV7P4Yz" class="img-fluid" alt="...">
+<!--        <img src="http://drive.google.com/uc?export=view&id=19_G2A4CktJ3tdGH6zriAyqNmPCV7P4Yz" class="img-fluid" alt="...">-->
+        <img src="{% static 'images/copiafreedark.jpg' %}" class="img-fluid" alt="...">
 <!--      <img src="http://drive.google.com/uc?export=view&id=1JCXgM-i1-l5yFOGMu1ZfvTKyTZ8cv5Y-" class="img-fluid" alt="...">-->
 <!--      <img src="https://i.pinimg.com/736x/cf/03/da/cf03daabe3b377987013a4994efe500a.jpg" class="img-fluid" alt="...">-->
       <div class="carousel-caption d-none d-md-block">
@@ -71,7 +79,8 @@
     </div>
 
       <div class="carousel-item">
-          <img src="http://drive.google.com/uc?export=view&id=1JCXgM-i1-l5yFOGMu1ZfvTKyTZ8cv5Y-" class="img-fluid" alt="...">
+<!--          <img src="http://drive.google.com/uc?export=view&id=1JCXgM-i1-l5yFOGMu1ZfvTKyTZ8cv5Y-" class="img-fluid" alt="...">-->
+          <img src="{% static 'images/copiacaretas.jpg' %}" class="img-fluid" alt="...">
 <!--        <img src="http://drive.google.com/uc?export=view&id=18SItFUaneJPzo360jAZ6kwBQpgGbGlht" class="img-fluid" alt="...">-->
 <!--      <img src="https://image.shutterstock.com/image-photo/collage-portraits-ethnically-diverse-mixed-600w-725291137.jpg" class="d-block w-100" alt="...">-->
       <div class="carousel-caption d-none d-md-block">
@@ -93,56 +102,72 @@
   <hr>
 
   <div class="container">
-   <center><p><h3>¿Por qué abrir una cuenta en ProfessionApp?</h3></p></center>
+      <center><p><h2>¿Por qué abrir una cuenta en ProfessionApp?</h2></p></center>
   </div>
   <hr>
-
-  <!--  -->
-    <section>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="col-md-12 col-lg-10 col-sm-12">
-                    <div class="bloque-opere">
-                        <h2>Trabaja desde cualquier lugar</h2>
-                        <span>
-                            Ingresá desde cualquier dispositivo y realizá búsquedas en toda la región. Nuestra plataforma garantiza una rápida y correcta visualización de todos aquellos datos importantes para que tomes la mejor decisión al instante.
-                        </span>
-                    </div>
-
-                </div>
-                <br>
-                <div class="col-md-12 col-lg-10 col-sm-12">
-                    <div>
-                        <h2>Tu perfil en tiempo real</h2>
-                        <span> Al abrir una cuenta de inversión en ProfessionApp accederás a todas las cotizaciones de los diversos mercados en Tiempo Real, pudiendo optimizar al máximo tus inversiones y rentabilidad.</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class ="col">
-                <div class="col-md-12 col-lg-10 col-sm-12">
-                    <img src="https://comsitecsac.com/data/cache/thum_21256tbadpr614507t.jpg">
-                </div>
-
-                <br>
-
-                 <div class="col-md-12 col-lg-10 col-sm-12">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTi3jAbkjMjlKps-Q6sjpxVMAo_dZc4yFjDoW4FlXy7KHIzT81H&usqp=CAU">
-                </div>
-
-            </div>
-        </div>
-    </div>
-    </section>
-
-
-<!--  -->
-<hr>
-
+ <section>
   <div class="container">
-    <center><p><h1>Abrí tu Cuenta en 3 pasos</h1></p></center>
+  <div class="row row-cols-2">
+    <div class="col">
+        <center><h3>Trabaja desde cualquier lugar</h3>
+        <span>Ingresá desde cualquier dispositivo y realizá búsquedas en toda la región. Nuestra plataforma garantiza una rápida y correcta visualización de todos aquellos datos importantes para que tomes la mejor decisión al instante.</span>
+        </center>
+    </div>
+    <div class="col">
+        <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-display" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.75 13.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75z"/>
+          <path fill-rule="evenodd" d="M13.991 3H2c-.325 0-.502.078-.602.145a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
+        </svg>
+        <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-laptop" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M13.5 3h-11a.5.5 0 0 0-.5.5V11h12V3.5a.5.5 0 0 0-.5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11z"/>
+          <path d="M0 12h16v.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5V12z"/>
+        </svg>
+        <svg width="8em" height="8em" viewBox="0 0 16 16" class="bi bi-tablet" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+          <path fill-rule="evenodd" d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col">
+            <center><h3>Perfiles en tiempo real</h3>
+                <span> Al abrir una cuenta en ProfessionApp accederás a perfiles de Profesionales en Tiempo Real. Profesionales las 24 hs del dia, los 7 dias de la semana, los 365 dias del año.</span>
+            </center>
+        </div>
+
+        <div class="col">
+         <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-calendar-date" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+        </svg>
+        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-calendar-day" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+          <path d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V7.418h-.672v4.105z"/>
+        </svg>
+            <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-calendar-month" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              <path d="M2.56 11.332L3.1 9.73h1.984l.54 1.602h.718L4.444 6h-.696L1.85 11.332h.71zm1.544-4.527L4.9 9.18H3.284l.8-2.375h.02zm5.746.422h-.676V9.77c0 .652-.414 1.023-1.004 1.023-.539 0-.98-.246-.98-1.012V7.227h-.676v2.746c0 .941.606 1.425 1.453 1.425.656 0 1.043-.28 1.188-.605h.027v.539h.668V7.227zm2.258 5.046c-.563 0-.91-.304-.985-.636h-.687c.094.683.625 1.199 1.668 1.199.93 0 1.746-.527 1.746-1.578V7.227h-.649v.578h-.019c-.191-.348-.637-.64-1.195-.64-.965 0-1.64.679-1.64 1.886v.34c0 1.23.683 1.902 1.64 1.902.558 0 1.008-.293 1.172-.648h.02v.605c0 .645-.423 1.023-1.071 1.023zm.008-4.53c.648 0 1.062.527 1.062 1.359v.253c0 .848-.39 1.364-1.062 1.364-.692 0-1.098-.512-1.098-1.364v-.253c0-.868.406-1.36 1.098-1.36z"/>
+            </svg>
+            <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+              <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+              <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+    </div>
+
+    </div>
+</div>
+
+<hr>
+ </section>
+  <div class="container">
+    <center><p><h1>Abrí tu Cuenta en simples pasos</h1></p></center>
 
     {% include 'includes/home-containers.html' %}
     <hr>
