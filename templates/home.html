@@ -32,8 +32,8 @@
 
       {% if user.profesional.id %}
           <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
-          <a class="btn btn-primary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
-          <a class="btn btn-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
+          <a class="btn btn-secondary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
+          <a class="btn btn-secondary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
         {% else %}
           <h3><p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p></h3>
           <a class="btn btn-info btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
@@ -43,8 +43,8 @@
         <br>
 
       <h3><p>Mis datos</p></h3>
-      <a class="btn btn-primary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
-      <a class="btn btn-primary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
+      <a class="btn btn-secondary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
+      <a class="btn btn-secondary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
 
   </div>
 {% else %}
@@ -57,7 +57,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{% static 'images/logohome2.png' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'images/logohome2 - copia.png' %}" class="d-block w-100" alt="...">
 <!--      <img src="http://drive.google.com/uc?export=view&id=19_G2A4CktJ3tdGH6zriAyqNmPCV7P4Yz" class="d-block w-100" alt="...">-->
 <!--      <img src="https://www.picserver.org/images/highway/phrases/100-free.jpg" class="d-block w-100" alt="...">-->
       <div class="carousel-caption d-none d-md-block">
