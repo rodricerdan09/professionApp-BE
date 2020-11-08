@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block title %}Ingresar{% endblock title %}
@@ -18,21 +19,37 @@
     {% endfor %}
 {% endif%}
 
-<div class="content-section">
-        <form method="POST">{% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Ingresa a tu cuenta</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Ingresar</button>
+<div class="container">
+<div class="row ">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+        <div class="d-table-cell align-middle">
+            <div class="text-center mt-4">
+                <h1 class="h2">Hola!</h1>
+                <p class="lead">Si te registraste, ingresá tus datos</p>
             </div>
-        </form>
+            <div class="card">
+                <div class="card-body">
+                    <div class="m-sm-4">
+                        <div class="text-center">
+                            <img src="{% static 'images/logo.png' %}" alt="Andrew Jones" class="img-fluid rounded-circle" width="130 " height="130">
+                            <p class="lead">ProfessionApp</p>
+                        </div>
+                        <form method="POST">{% csrf_token %}
 
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                No tienes cuenta?<a class="ml-2" href="{% url 'signup' %}">Crear cuenta</a>
-            </small>
+                            {{ form.username |as_crispy_field }}
+                            {{ form.password |as_crispy_field }}
+
+                            <div class="text-center mt-3">
+                                 <button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 </div>
+</div>
+<br>
+
 {% endblock content %}
