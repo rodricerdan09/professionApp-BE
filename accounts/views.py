@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileCreationForm
 
+
 class ProfesionListView(ListView):
     model = Profesion
     paginate_by = 10
@@ -22,6 +23,16 @@ class EspecialidadListView(ListView):
         return super(EspecialidadListView, self).get_queryset().filter(
             profesion__name=self.kwargs['profesion_nombre']
         )
+
+
+class ProfesionalListView(ListView):
+    model = Profesional
+    paginate_by = 8
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total'] = Profesional.objects.count()
+        return context
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -101,7 +112,7 @@ class CrearPerfilProfesional(CreateView):
 
 class ProfesionalDetailView(LoginRequiredMixin, DetailView):
     model = Profesional
-    template_name = 'accounts/profesional_detail.html'
+    template_name = 'accounts/profesional_detail_nuevo.html'
 
 
 class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
