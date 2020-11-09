@@ -113,6 +113,14 @@ class CrearPerfilProfesional(CreateView):
 class ProfesionalDetailView(LoginRequiredMixin, DetailView):
     model = Profesional
     template_name = 'accounts/profesional_detail_nuevo.html'
+    permission_denied_message = '<strong>Debe iniciar sesión para continuar</strong>    '
+    login_url = '/cuenta/login'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.add_message(request, messages.INFO, self.permission_denied_message)  # added this line
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):

@@ -19,7 +19,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
     form_class = UserCreationForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
-    success_message = 'Cuenta creada! Ya a puedes iniciar sesion'
+    success_message = '<strong>Bienvenido!</strong> Cuenta creada! Ya a puedes iniciar sesion'
 
 
 def error_404_view(request, exception):
