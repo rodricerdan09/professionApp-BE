@@ -4,6 +4,13 @@
 {% block content %}
 
 {%if object_list%}
+<!--<style>-->
+<!--    .ag-flex-center{-->
+<!--	display: flex;-->
+<!--	justify-content: center;-->
+<!--	align-items: center;-->
+<!--}-->
+<!--</style>-->
 
 <!--<center><h2>Profesionales registrados: {{total}}</h2></center>-->
 <div class="container d-flex justify-content-center mt-5">
@@ -15,7 +22,8 @@
                     <div class="one">
                         <div class="text-right pr-2 pt-1"><i class="mdi mdi-dots-vertical dotdot"></i></div>
                         <div class="d-flex justify-content-center">
-                            <img src="{% static 'images/campeon.jpg' %}" width="100" class="rounded-circle">
+                            <img src="{% static 'images/avatar7.png' %}" width="100" class="rounded-circle">
+<!--                            <img src="{% static 'images/campeon.jpg' %}" width="100" class="rounded-circle">-->
 <!--                            <img src="https://i.imgur.com/hczKIze.jpg" width="80" class="rounded-circle">-->
                         </div>
                         <div class="text-center"> <span class="name">{{profesional}}</span>
@@ -32,6 +40,34 @@
             </div>
 
             {% endfor %}
+
+    <div class="container">
+
+        {% if is_paginated %}
+        <ul class="pagination ag-flex-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item mr-1 ag-pagination-item ag-pagination-border">
+                    <a href="?page={{page_obj.previous_page_number}}" class="ag-pagination-item ag-pagination-border page-link">Anterior</a>
+                </li>
+            {% endif %}
+            {% for i in paginator.page_range %}
+
+                    <li class="page-item {% if page_obj.number == i %} active {%endif%}">
+                        <a href="?page={{i}}" class="ag-pagination-item page-link ag-border">{{i}}</a>
+                    </li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item ml-1">
+                    <a href="?page={{page_obj.next_page_number}}" class="ag-pagination-item ag-pagination-border page-link">Siguiente</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    {%endif%}
+
+    </div>
+
+
         </div>
     </div>
 </div>
