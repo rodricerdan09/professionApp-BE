@@ -6,9 +6,14 @@
 {% block content %}
 
 <h2><strong>Bienvenido </strong> @{{ object.username | title }}<i></i></h2>
-<div class="card" style="width:75%;">
-  <div class="card-body">
-    <h5 class="card-title">Mis datos</h5>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+<!--      <div class="card" style="width:90%;">-->
+          <div class="card border-light mb-3" style="max-width: 90%;">
+        <div class="card-body">
+        <h5 class="card-title">Mis datos personales</h5>
 
       <ul class="list-group">
           <li class="list-group-item"><strong>Nombre de Usuario:</strong> {{ object.username }}</li>
@@ -18,26 +23,62 @@
           <li class="list-group-item"><strong>Ultima conexion:</strong> {{ object.last_login | timesince }}</li>
           <li class="list-group-item"><strong>Cuenta Activa:</strong> {{ object.is_active | yesno:"Si,No,Nose"}}</li>
       </ul>
+
       {% comment %}
             {{ object.bio |default:" (sin bio)" }}
 
             <i>({{ object.bio|default_if_none:"sin bio"}})</i>
 
-            <li><strong>Dni:</strong> {{ object.dni }}</li>
-            <li><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}</li>
-            <li><strong>Direccion:</strong> {{ object.direccion }}</li>
+            <strong>Dni:</strong> {{ object.dni }}
+            <strong>Fecha de Nacimiento:</strong> {{ object.fecha_nac|date }}
+            <strong>Direccion:</strong> {{ object.direccion }}
 
-            <li><strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}}) </li>
-            <li><strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}</li>
+            <strong>Telefono:</strong> {{object.telefono}} ({{object.get_tipo_telefono_display}})
+            <strong>Matricula:</strong> {{ object.matricula |default:"Su profesion no requiere"}}
             {{ object.matricula |default_if_none:"No posee"}}
             <!--    <p>Profesion: {{ object.profesion}}</p>-->
-            <li><strong>Especialidad:</strong> {{ object.especialidad}}</li>
-            <li><strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}</li>
+            <strong>Especialidad:</strong> {{ object.especialidad}}
+            <strong>Staff:</strong> {{ object.is_staff | yesno:"Si,No,Nose"}}
         {% endcomment %}
 
   </div>
 </div>
- {% comment %}
+
+    </div>
+
+    <div class="col">
+      <div class="card border-light mb-3" style="max-width: 90%;">
+        <div class="card-body">
+        <h5 class="card-title">Mi perfil profesional</h5>
+        {% if user.profesional.id %}
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Profesion:</strong> {{ object.profesional.profesion }}</li>
+              {% if object.matricula > 0 %}
+              <li class="list-group-item"><strong>Matricula:</strong> {{ object.profesional.matricula }}</li>
+              {% else %}
+              <li class="list-group-item"><strong>Matricula:</strong> No posee</li>
+              {% endif %}
+              <li class="list-group-item"><strong>Sitio Web:</strong> {{ object.profesional.website_url }}</li>
+              <li class="list-group-item"><strong>Facebook:</strong> @{{ object.profesional.facebook_url }}</li>
+              <li class="list-group-item"><strong>Instragram:</strong> @{{ object.profesional.instagram_url }}</li>
+              <li class="list-group-item"><strong>Mis Servicios:</strong> {{object.profesional.servicio }}</li>
+            </ul>
+        {% else %}
+            <ul class="list-group">
+                <li class="list-group-item"><strong>No tiene un perfil profesional</strong></li>
+            </ul>
+        {% endif %}
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+{% comment %}
 {{user.get_short_name}}{{ user.get_username}}
    <li>No existen Especialidades en {{ request.path }}</li>
    <li>No existen Especialidades en {{ request.get_full_path.url }}</li>
