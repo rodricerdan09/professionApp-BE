@@ -84,6 +84,7 @@ class Profesional(models.Model):
     matricula = models.IntegerField(default=0, blank=True, null=True)
     profesion = models.ForeignKey(Profesion, on_delete=models.DO_NOTHING)
     servicio = models.TextField(blank=True, null=True)
+    telefono = models.PositiveIntegerField(help_text="Ingrese solo numeros", null=True, blank=True)
     website_url = models.CharField("Sitio Web", help_text="Ej: www.mipagina.com", max_length=255, blank=True, null=True)
     facebook_url = models.CharField("Facebook",
                                     help_text="Solamente el nombre de su cuenta. Ej: www.facebook.com/micuenta",

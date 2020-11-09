@@ -53,10 +53,15 @@
         {% if user.profesional.id %}
             <ul class="list-group">
               <li class="list-group-item"><strong>Profesion:</strong> {{ object.profesional.profesion }}</li>
-              {% if object.matricula > 0 %}
+              {% if object.profesional.matricula > 0 %}
               <li class="list-group-item"><strong>Matricula:</strong> {{ object.profesional.matricula }}</li>
               {% else %}
               <li class="list-group-item"><strong>Matricula:</strong> No posee</li>
+              {% endif %}
+                {% if object.profesional.telefono > 0 %}
+              <li class="list-group-item"><strong>Telefono:</strong> {{ object.profesional.telefono }}</li>
+              {% else %}
+              <li class="list-group-item"><strong>Telefono:</strong> No registra</li>
               {% endif %}
               <li class="list-group-item"><strong>Sitio Web:</strong> {{ object.profesional.website_url }}</li>
               <li class="list-group-item"><strong>Facebook:</strong> @{{ object.profesional.facebook_url }}</li>

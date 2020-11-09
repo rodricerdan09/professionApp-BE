@@ -14,4 +14,4 @@ class UserCreationForm(UserCreationForm):
 class ProfileCreationForm(ModelForm):
     class Meta:
         model = Profesional
-        fields = ('profesion', 'matricula', 'servicio', 'website_url', 'facebook_url', 'instagram_url')
+        fields = ('profesion', 'matricula', 'telefono', 'servicio', 'website_url', 'facebook_url', 'instagram_url')

@@ -125,7 +125,7 @@ class ProfesionalDetailView(LoginRequiredMixin, DetailView):
 
 class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
     model = Profesional
-    fields = ('profesion', 'matricula', 'website_url', 'facebook_url', 'instagram_url', 'servicio')
+    fields = ('profesion', 'matricula', 'telefono', 'website_url', 'facebook_url', 'instagram_url', 'servicio')
     template_name = 'accounts/profesional_update.html'
 
     def get_absolute_url(self):

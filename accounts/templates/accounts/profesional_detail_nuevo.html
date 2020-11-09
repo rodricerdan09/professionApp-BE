@@ -13,8 +13,8 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{% static 'images/campeon.jpg' %}" alt="" class="rounded-circle" width="200">
-<!--                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle" width="150">-->
+<!--                    <img src="{% static 'images/campeon.jpg' %}" alt="" class="rounded-circle" width="220">-->
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>{{ object.profesion.abbreviation | title }}. {{ object.usuario.get_full_name | title }} </h4>
                       <p class="text-secondary mb-1">@{{object.usuario.username}}</p>
@@ -95,8 +95,13 @@
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-3"><h6 class="mb-0">Mobile</h6></div>
-                    <div class="col-sm-9 text-secondary">(320) 380-4539</div>
+                    <div class="col-sm-3"><h6 class="mb-0">Telefono</h6></div>
+                    {% if object.telefono > 0 %}
+                    <div class="col-sm-9 text-secondary">{{object.telefono}}</div>
+                      {%else%}
+                      <div class="col-sm-9 text-secondary">No informa</div>
+                      {%endif%}
+
                   </div>
                   <hr>
                   <div class="row">
@@ -109,7 +114,7 @@
                 <div class="col-sm-12 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Servicios</i>Project Status</h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Servicios</i></h6>
 
                       <small>{{object.servicio}}</small>
 
