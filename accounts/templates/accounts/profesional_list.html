@@ -22,7 +22,10 @@
                             <p class="mail">{{profesional.usuario.email}}</p>
                         </div>
                         <div class="text-center"> <span class="total d-block pt-2">Profesion</span> <span class="money">{{profesional.profesion | title}}</span> </div>
-                        <div class="text-center align-items-center d-flex justify-content-center pt-2 pb-2"><span class="details">Ver detalles</span><i class="mdi mdi-arrow-right right pl-1"></i></div>
+                        <div class="text-center align-items-center d-flex justify-content-center pt-2 pb-2">
+<!--                            <span class="details">Ver detalles</span><i class="mdi mdi-arrow-right right pl-1"></i>-->
+                            <a href="{% url 'profesional-detail' profesional.id  %}">Ver perfil</a>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -34,7 +37,7 @@
 </div>
 
 {%else%}
-    <center><h2><li>No existen Profesionales</h2></center></li>
+    <center><h2>No existen Profesionales</h2></center>
 {% endif %}
 
 {% endblock %}
