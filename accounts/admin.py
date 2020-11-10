@@ -14,7 +14,7 @@ class InLineEspecialidad(admin.StackedInline):
 @admin.register(Profesion)
 class AdminProfesion(admin.ModelAdmin):
     inlines = [InLineEspecialidad]
-    list_display = ['name', 'abbreviation', 'count_esp']  # es lo que se muestra en la grilla
+    list_display = ['name', 'abbreviation', 'count_esp', 'count_profesionales']  # es lo que se muestra en la grilla
 
     class Meta:
         model = Profesion
