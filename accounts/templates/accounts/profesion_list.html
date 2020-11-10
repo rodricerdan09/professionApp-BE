@@ -25,7 +25,7 @@
                 <p class="card-text">Detalle de {{profesion | title }}</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Profesionales registrados: </li>
+                <li class="list-group-item">Profesionales registrados: ({{profesion.count_profesionales}})</li>
                 <li class="list-group-item">Especialidades: ({{profesion.count_esp}})
                     <a href="{% url 'especialidad-list' profesion %}" role="button">Ver</a>
                 </li>

@@ -62,6 +62,12 @@ class Profesion(models.Model):
     count_esp.empty_value_display = 'S/V'
     count_esp.short_description = "Cant Especialidades"
 
+    def count_profesionales(self):
+        return Profesional.objects.filter(profesion=self.pk).count()
+
+    count_profesionales.empty_value_display = 'S/V'
+    count_profesionales.short_description = "Cant Profesionales"
+
 
 class Especialidad(models.Model):
     profesion = models.ForeignKey(Profesion, on_delete=models.CASCADE)
