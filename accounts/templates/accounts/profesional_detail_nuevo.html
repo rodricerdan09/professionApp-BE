@@ -16,7 +16,7 @@
 <!--                    <img src="{% static 'images/campeon.jpg' %}" alt="" class="rounded-circle" width="220">-->
 <!--                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle" width="150">-->
                     {% if request.user.profesional.profile_pic %}
-                      <img src="{{request.user.profesional.profile_pic.url}}" class="rounded-circle" width="200">
+                      <img src="{{object.profile_pic.url}}" class="rounded-circle" width="200">
                     {%else%}
                       <img src="{% static 'images/avatar7.png' %}" alt="" class="rounded-circle" width="200">
                     {%endif%}
