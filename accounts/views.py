@@ -28,11 +28,12 @@ class EspecialidadListView(ListView):
 class ProfesionalporProfesionListView(ListView):
     model = Profesional
     paginate_by = 8
+    template_name = 'accounts/profesional_por_profesion_list.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['total'] = Profesional.objects.filter(profesion=self.kwargs['id']).count()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total'] = Profesional.objects.filter(profesion=self.kwargs['pk']).count()
+        return context
 
     def get_queryset(self):
         return super(ProfesionalporProfesionListView, self).get_queryset().filter(
