@@ -20,12 +20,14 @@
 
             <div class="card-body">
                 <h5 class="card-title">{{profesion | title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Profesionales registrados: </h6>
-                <h6 class="card-subtitle mb-2 text-muted">Especialidades: ({{profesion.count_esp}}) </h6>
+<!--                <h6 class="card-subtitle mb-2 text-muted">Profesionales registrados: </h6>-->
+<!--                <h6 class="card-subtitle mb-2 text-muted">Especialidades: ({{profesion.count_esp}}) </h6>-->
                 <p class="card-text">Detalle de {{profesion | title }}</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Profesionales registrados: ({{profesion.count_profesionales}})</li>
+                <li class="list-group-item">Profesionales registrados: ({{profesion.count_profesionales}})
+                    <a href="{% url 'profesional-profesion-list' profesion.id %}" role="button">Ver</a>
+                </li>
                 <li class="list-group-item">Especialidades: ({{profesion.count_esp}})
                     <a href="{% url 'especialidad-list' profesion %}" role="button">Ver</a>
                 </li>
