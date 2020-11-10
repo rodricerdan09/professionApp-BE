@@ -1,0 +1,142 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Modificar datos{% endblock title %}
+
+{% block content %}
+
+<!--      <form method="post">{% csrf_token %}-->
+<!--<div class="card border-primary mb-3" style="width:75%;">-->
+
+<!--  <div class="card-header">Informacion del Profesional</div>-->
+<!--  <div class="card-body">-->
+<!--          <br>-->
+<!--          <div class="form-row">-->
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--              {{ form.profesion|as_crispy_field }}-->
+<!--            </div>-->
+
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--              {{ form.matricula|as_crispy_field }}-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <br>-->
+<!--            <p class="card-header">Informacion de Contacto </p>-->
+<!--          <br>-->
+<!--          <div class="form-row">-->
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--              {{ form.telefono|as_crispy_field }}-->
+<!--            </div>-->
+
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--              {{ form.website_url|as_crispy_field }}-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="form-row">-->
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--                {{ form.facebook_url|as_crispy_field }}-->
+<!--            </div>-->
+
+<!--            <div class="form-group col-md-6 mb-0">-->
+<!--              {{ form.instagram_url|as_crispy_field }}-->
+<!--            </div>-->
+<!--          </div>-->
+<!--            <p class="card-header">Servicios que ofrece </p>-->
+<!--            {{ form.servicio|as_crispy_field }}-->
+<!--  </div>-->
+<!--</div>-->
+<!--<input class="btn btn-primary ml-2" type="submit" value="Guardar">-->
+<!--</form>-->
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<div class="container">
+    <h3>Modificar Perfil Profesional</h3>
+    <div class="main-body">
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+<!--                    <img src="{% static 'images/avatar7.png' %}" alt="" class="rounded-circle" width="150">-->
+<!--                      <img src="{{request.user.profesional.profile_pic.url}}"  width="200">-->
+
+                          {% if request.user.profesional.profile_pic  %}
+                            <img src="{{request.user.profesional.profile_pic.url}}" class="rounded-circle" width="200">
+                          {%else%}
+                            <img src="{% static 'images/avatar7.png' %}" alt="" class="rounded-circle" width="200">
+                          {%endif%}
+                  </div>
+                </div>
+              </div>
+                <div class="card">
+                    <div class="card-body">
+                        {{form.profile_pic}}
+                    </div>
+                </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Web</h6>
+                        <span class="text-secondary">{{form.website_url}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Ig</h6>
+                      <span class="text-secondary">{{form.instagram_url}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-info"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Fb</h6>
+                      <span class="text-secondary">{{form.facebook_url}}</span>
+
+                  </li>
+                </ul>
+              </div>
+                <div class="card mt-3">
+<!--                    <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Volver</a>-->
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+
+                <div class="card mt-3">
+                    <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Volver</a>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Datos</i></h6>
+                  <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Profesion</h6></div>
+                    <div class="col-sm-9 text-secondary">{{ form.profesion }}</div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Matricula</h6></div>
+                    <div class="col-sm-9 text-secondary">{{form.matricula}}</div>
+                  </div>
+                    <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Telefono</h6></div>
+                    <div class="col-sm-9 text-secondary">{{form.telefono}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row gutters-sm">
+                <div class="col-sm-12 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Servicios</i></h6>
+
+                      <small>{{form.servicio}}</small>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -130,3 +130,12 @@ class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_absolute_url(self):
         return reverse_lazy('profesional-detail', self.id)
+
+
+class ProfesionalUpdateNuevoView(LoginRequiredMixin, UpdateView):
+    model = Profesional
+    fields = ('profesion', 'matricula', 'telefono', 'profile_pic', 'website_url', 'facebook_url', 'instagram_url', 'servicio')
+    template_name = 'accounts/profesional_update_nuevo.html'
+
+    def get_absolute_url(self):
+        return reverse_lazy('profesional-detail', self.id)

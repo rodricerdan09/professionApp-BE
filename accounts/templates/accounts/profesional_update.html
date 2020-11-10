@@ -5,21 +5,68 @@
 {% block title %}Modificar datos{% endblock title %}
 
 {% block content %}
-
 <h2>Actualizar mi Perfil Profesional</h2>
-<div class="card" style="width:75%;">
+      <form method="post">{% csrf_token %}
+<div class="card border-primary mb-3" style="width:75%;">
+<!--<div class="card text-white bg-secondary mb-3" style="width:75%;">-->
+  <div class="card-header">Informacion del Profesional</div>
   <div class="card-body">
-    <form method="post">{% csrf_token %}
-        {{ form.profesion|as_crispy_field }}
-        {{ form.matricula|as_crispy_field }}
-        {{ form.telefono|as_crispy_field }}
-        {{ form.website_url|as_crispy_field }}
-        {{ form.facebook_url|as_crispy_field }}
-        {{ form.instagram_url|as_crispy_field }}
-        {{ form.servicio|as_crispy_field }}
+<!--    <h4 class="card-title">Datos</h4>-->
+<!--    <p class="card-text">Edito </p>-->
 
-        <input class="btn btn-primary ml-2" type="submit" value="Guardar">
-    </form>
+<!--          <p class="card-header">Informacion del Profesional </p>-->
+          <br>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{ form.profesion|as_crispy_field }}
+            </div>
+
+            <div class="form-group col-md-6 mb-0">
+              {{ form.matricula|as_crispy_field }}
+            </div>
+          </div>
+          <br>
+            <p class="card-header">Informacion de Contacto </p>
+          <br>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{ form.telefono|as_crispy_field }}
+            </div>
+
+            <div class="form-group col-md-6 mb-0">
+              {{ form.website_url|as_crispy_field }}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+                {{ form.facebook_url|as_crispy_field }}
+            </div>
+
+            <div class="form-group col-md-6 mb-0">
+              {{ form.instagram_url|as_crispy_field }}
+            </div>
+          </div>
+            <p class="card-header">Servicios que ofrece </p>
+            {{ form.servicio|as_crispy_field }}
   </div>
 </div>
+<input class="btn btn-primary ml-2" type="submit" value="Guardar">
+</form>
+
+<!--<div class="card" style="width:75%;">-->
+<!--  <div class="card-body">-->
+<!--    <form method="post">{% csrf_token %}-->
+<!--            {{ form.profesion|as_crispy_field }}-->
+<!--            {{ form.matricula|as_crispy_field }}-->
+
+<!--            {{ form.telefono|as_crispy_field }}-->
+<!--            {{ form.website_url|as_crispy_field }}-->
+<!--            {{ form.facebook_url|as_crispy_field }}-->
+<!--            {{ form.instagram_url|as_crispy_field }}-->
+<!--            {{ form.servicio|as_crispy_field }}-->
+<!--        <input class="btn btn-primary ml-2" type="submit" value="Guardar">-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
 {% endblock %}
