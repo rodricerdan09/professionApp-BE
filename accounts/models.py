@@ -91,6 +91,8 @@ class Profesional(models.Model):
     profesion = models.ForeignKey(Profesion, on_delete=models.DO_NOTHING)
     servicio = models.TextField(blank=True, null=True)
     telefono = models.PositiveIntegerField(help_text="Ingrese solo numeros", null=True, blank=True)
+    profile_pic = models.ImageField("Avatar", upload_to="", default="avatar7.png", null=True, blank=False,
+                                    max_length=255)
     website_url = models.CharField("Sitio Web", help_text="Ej: www.mipagina.com", max_length=255, blank=True, null=True)
     facebook_url = models.CharField("Facebook",
                                     help_text="Solamente el nombre de su cuenta. Ej: www.facebook.com/micuenta",

@@ -14,15 +14,21 @@
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
 <!--                    <img src="{% static 'images/campeon.jpg' %}" alt="" class="rounded-circle" width="220">-->
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle" width="150">
+<!--                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle" width="150">-->
+                    {% if request.user.profesional.profile_pic %}
+                      <img src="{{request.user.profesional.profile_pic.url}}" class="rounded-circle" width="200">
+                    {%else%}
+                      <img src="{% static 'images/avatar7.png' %}" alt="" class="rounded-circle" width="200">
+                    {%endif%}
                     <div class="mt-3">
                       <h4>{{ object.profesion.abbreviation | title }}. {{ object.usuario.get_full_name | title }} </h4>
                       <p class="text-secondary mb-1">@{{object.usuario.username}}</p>
-                      <p class="text-muted font-size-sm">Profesion: {{object.profesion}}</p>
+                      <p class="text-muted font-size-sm"><strong>Profesion: {{object.profesion}}</strong></p>
 <!--                      object.id = {{object.id}}-->
 <!--                      request.user.profesional.id = {{request.user.profesional.id}}-->
                       {% if request.user.profesional.id == object.id %}
-                        <a class="btn btn-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil </a>
+                      <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Volver</a>
+                      <a class="btn btn-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil </a>
                       {%else%}
                         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Agregar a favoritos!">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill text-warning" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -75,6 +81,7 @@
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Datos</i></h6>
                   <div class="row">
                     <div class="col-sm-3"><h6 class="mb-0">Nombre completo</h6></div>
                     <div class="col-sm-9 text-secondary">{{object.usuario.get_full_name | title}}</div>
