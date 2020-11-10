@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from django.urls import reverse_lazy
 from accounts.forms import UserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
-from accounts.models import Profesion
+from accounts.models import Profesion, Profesional
+from django.db.models import Q
 
 
 class HomePageView(TemplateView):
@@ -25,3 +26,25 @@ class SignUpView(SuccessMessageMixin, CreateView):
 def error_404_view(request, exception):
     return render(request, '404.html')
     # TODO: poner en modo debug = False
+
+
+class BuscarResultView(ListView):
+    model = Profesional
+    paginate_by = 8
+    template_name = 'resultados_profesional.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Profesional.objects.filter(
+            Q(profesion__name__icontains=query) | Q(servicio__icontains=query)
+        )
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        query = self.request.GET.get('q')
+        context = super().get_context_data(**kwargs)
+        context['total'] = Profesional.objects.filter(
+            Q(profesion__name__icontains=query) | Q(servicio__icontains=query)
+        ).count()
+        context['query'] = query
+        return context

@@ -10,9 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Buscar un Servicio</a>
-            </li>
+
+                  <form class="form-inline my-2 my-lg-0" action="{% url 'buscar' %}" method="get">{% csrf_token %}
+                    <input class="form-control mr-sm-2" placeholder="Buscar profesional/servicio..." name="q" style="width: 220px;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                  </form>
+
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link disabled" href="#">Buscar un Servicio</a>-->
+<!--            </li>-->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>
             </li>
@@ -23,14 +29,26 @@
 <!--              <a class="nav-link disabled" href="#">Deshabilitado</a>-->
 <!--            </li>-->
 
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdown07">
-                      <a class="dropdown-item" href="#">Qué es ProfessionApp?</a>
-                      <a class="dropdown-item" href="#">Cómo usar ProfessionApp?</a>
-                      <a class="dropdown-item" href="#">Quiero trabajar en ProfessionApp!</a>
-                    </div>
-                </li>
+<!--                Menu desplegable Listados-->
+
+<!--              <li class="nav-item dropdown">-->
+<!--                  <a class="nav-link dropdown-toggle" href="#" id="dropdown077" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</a>-->
+<!--                  <div class="dropdown-menu" aria-labelledby="dropdown077">-->
+<!--                      <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>-->
+<!--                      <a class="nav-link" href="{% url 'profesional-list' %}">Lista de Profesionales</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+
+<!--                Menu desplegable Ayuda-->
+<!--              <li class="nav-item dropdown">-->
+<!--                  <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda</a>-->
+<!--                  <div class="dropdown-menu" aria-labelledby="dropdown07">-->
+<!--                      <a class="dropdown-item" href="#">Qué es ProfessionApp?</a>-->
+<!--                      <a class="dropdown-item" href="#">Cómo usar ProfessionApp?</a>-->
+<!--                      <a class="dropdown-item" href="#">Quiero trabajar en ProfessionApp!</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+
           </ul>
 
             <!-- botones de la derecha-->
