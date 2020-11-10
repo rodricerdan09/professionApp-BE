@@ -15,7 +15,8 @@
                     <div class="one">
                         <div class="text-right pr-2 pt-1"><i class="mdi mdi-dots-vertical dotdot"></i></div>
                         <div class="d-flex justify-content-center">
-                            <img src="{% static 'images/avatar7.png' %}" width="100" class="rounded-circle">
+<!--                            <img src="{% static 'images/avatar7.png' %}" width="100" class="rounded-circle">-->
+                            <img src="{{profesional.profile_pic.url}}" width="100" class="rounded-circle">
                         </div>
                         <div class="text-center"> <span class="name">{{profesional}}</span>
                             <p class="mail">{{profesional.usuario.email}}</p>
