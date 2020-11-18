@@ -2,77 +2,164 @@
 {% load static %}
 {% block title %}Profesionales{% endblock title %}
 {% block content %}
-
 {%if object_list%}
-<!--<style>-->
-<!--    .ag-flex-center{-->
-<!--	display: flex;-->
-<!--	justify-content: center;-->
-<!--	align-items: center;-->
-<!--}-->
-<!--</style>-->
+<div class="container">
+<!--    columna filtros-->
+    <div class="row align-items-center">
+        <div class="col-lg-12">
+            <div class="show-results mt-4">
+                <div class="float-left">
+                    <h5 class="text-dark mb-0 pt-2">Resultados: {{page_obj.start_index}}-{{page_obj.end_index}} de {{paginator.count}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!--<center><h2>Nuestros Profesionales : {{total}}</h2></center>-->
-<center><h2>Nuestros Profesionales</h2></center>
-<div class="container d-flex justify-content-center mt-5">
-    <div class="main">
-        <div class="row">
-            {% for profesional in object_list %}
-            <div class="col-md-3">
-                <div>
-                    <div class="one">
-                        <div class="text-right pr-2 pt-1"><i class="mdi mdi-dots-vertical dotdot"></i></div>
-                        <div class="d-flex justify-content-center">
-                            <img src="{{profesional.profile_pic.url}}" width="100" class="rounded-circle">
 
-<!--                            <img src="{% static 'images/avatar7.png' %}" width="100" class="rounded-circle">-->
-<!--                            <img src="{% static 'images/campeon.jpg' %}" width="100" class="rounded-circle">-->
-<!--                            <img src="https://i.imgur.com/hczKIze.jpg" width="80" class="rounded-circle">-->
+    <div class="row">
+    <!-- columna filtros-->
+        <div class="col-lg-3">
+        <div class="left-sidebar">
+            <div class="accordion" id="accordionExample">
+                <div class="card mt-4">
+                    <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true" aria-controls="collapsethree">
+                        <div class="card-header" id="headingthree">
+                            <h6 class="mb-0 text-dark f-18">Profesion</h6>
                         </div>
-                        <div class="text-center"> <span class="name">{{profesional}}</span>
-                            <p class="mail">{{profesional.usuario.email}}</p>
-                        </div>
-                        <div class="text-center"> <span class="total d-block pt-2">Profesion</span> <span class="money">{{profesional.profesion | title}}</span> </div>
-                        <div class="text-center align-items-center d-flex justify-content-center pt-2 pb-2">
-<!--                            <span class="details">Ver detalles</span><i class="mdi mdi-arrow-right right pl-1"></i>-->
-                            <a href="{% url 'profesional-detail' profesional.id  %}">Ver perfil</a>
+                    </a>
+                    <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
+                        <div class="card-body p-0">
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio7">Abogacia</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio8" name="customRadio1" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio8">Arquitectura</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio9" name="customRadio1" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio9">Ingenieria</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio10" name="customRadio1" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio10">Licenciado</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio11" name="customRadio1" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio11">Medicina</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <br>
+                <!-- collapse one end -->
+                <div class="card mt-4">
+                    <a data-toggle="collapse" href="#collapsefour" class="job-list" aria-expanded="true" aria-controls="collapsefour">
+                        <div class="card-header" id="headingfour">
+                            <h6 class="mb-0 text-dark f-18">Localidad</h6>
+                        </div>
+                    </a>
+                    <div id="collapsefour" class="collapse show" aria-labelledby="headingfour">
+                        <div class="card-body p-0">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio13" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio13">Male</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio14" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio14">Female</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio15" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio15">Others</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <a data-toggle="collapse" href="#collapseOne" class="job-list" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="card-header" id="headingOne">
+                            <h6 class="mb-0 text-dark f-18">Ultima Conexión</h6>
+                        </div>
+                    </a>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                        <div class="card-body p-0">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio1">Last Hour</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio2">Last 24 hours</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio3">Last 7 days</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio4">Last 14 days</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio5">Last 30 days</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- collapse one end -->
             </div>
-
-            {% endfor %}
-
-    <div class="container">
-
-        {% if is_paginated %}
-        <ul class="pagination ag-flex-center">
-            {% if page_obj.has_previous %}
-                <li class="page-item mr-1 ag-pagination-item ag-pagination-border">
-                    <a href="?page={{page_obj.previous_page_number}}" class="ag-pagination-item ag-pagination-border page-link">Anterior</a>
-                </li>
-            {% endif %}
-            {% for i in paginator.page_range %}
-
-                    <li class="page-item {% if page_obj.number == i %} active {%endif%}">
-                        <a href="?page={{i}}" class="ag-pagination-item page-link ag-border">{{i}}</a>
-                    </li>
-            {% endfor %}
-            {% if page_obj.has_next %}
-                <li class="page-item ml-1">
-                    <a href="?page={{page_obj.next_page_number}}" class="ag-pagination-item ag-pagination-border page-link">Siguiente</a>
-                </li>
-            {% endif %}
-        </ul>
-
-    {%endif%}
-
-    </div>
-
-
         </div>
     </div>
+    <!--    columna profesionales-->
+            <div class="col-lg-9">
+                <div class="row">
+                    {% for profesional in object_list %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="list-grid-item mt-4">
+                            <div class="grid-item-content p-2">
+                                <div class="employers-list-img mt-3">
+                                    <img src="{{profesional.profile_pic.url}}" alt="" class="img-fluid mx-auto d-block rounded-circle">
+                                </div>
+                                <div class="grid-list-desc text-center mt-4">
+                                    <h5 class="mb-1"><a href="#" class="text-dark">{{profesional}}</a></h5>
+                                    <p class="text-muted f-14 mb-0">{{profesional.profesion | title}}</p>
+                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{profesional.usuario.email}}</p>
+                                    <ul class="employers-icons list-inline mb-1">
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                    </ul>
+                                    <span class="badge badge-warning text-white">4.9</span>
+                                </div>
+                            </div>
+                            <hr class="mt-0 mb-0">
+                            <div class="apply-button text-center mt-2 mb-2">
+                                <a href="{% url 'profesional-detail' profesional.id  %}" class="btn btn-custom btn-sm">Ver perfil</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+<!--                    paginador-->
+                {% include 'includes/paginator.html' %}
+                </div>
+            </div>
+    </div>
+
 </div>
 
 {%else%}
