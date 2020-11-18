@@ -7,7 +7,7 @@
 {% block content %}
 
 <h2>Actualizar mis Datos</h2>
-<div class="card" style="width:75%;">
+<div class="card border-primary" style="width:75%;">
   <div class="card-body">
     <form method="post">{% csrf_token %}
          <div class="form-row">
@@ -22,7 +22,7 @@
 
         {{ form.email|as_crispy_field }}
 
-        <input class="btn btn-info ml-2" type="submit" value="Modificar">
+        <input class="btn btn-outline-primary ml-2" type="submit" value="Guardar">
     </form>
   </div>
 </div>
