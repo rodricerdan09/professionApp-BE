@@ -1,8 +1,7 @@
 {% load static %}
- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
- <div class="container">
+<nav class="navbar navbar-expand-md navbar-dark bg-info">
+    <div class="container">
         <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">
-<!--            <img src="https://seeklogo.com/images/R/raspberry-pi-logo-8240ABBDFE-seeklogo.com.png" width="30" height="30" class="d-inline-block align-top" alt="">ProfessionaApp-->
             <img src= "{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">ProfessionApp
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,79 +12,33 @@
 
                   <form class="form-inline my-2 my-lg-0" action="{% url 'buscar' %}" method="get">{% csrf_token %}
                     <input class="form-control mr-sm-2" placeholder="Buscar profesional/servicio..." name="q" style="width: 220px;">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
                   </form>
 
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link disabled" href="#">Buscar un Servicio</a>-->
-<!--            </li>-->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'profesional-list' %}">Lista de Profesionales</a>
             </li>
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link disabled" href="#">Deshabilitado</a>-->
-<!--            </li>-->
-
-<!--                Menu desplegable Listados-->
-
-<!--              <li class="nav-item dropdown">-->
-<!--                  <a class="nav-link dropdown-toggle" href="#" id="dropdown077" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lista</a>-->
-<!--                  <div class="dropdown-menu" aria-labelledby="dropdown077">-->
-<!--                      <a class="nav-link" href="{% url 'profesion-list' %}">Lista de Profesiones</a>-->
-<!--                      <a class="nav-link" href="{% url 'profesional-list' %}">Lista de Profesionales</a>-->
-<!--                    </div>-->
-<!--                </li>-->
-
-<!--                Menu desplegable Ayuda-->
-<!--              <li class="nav-item dropdown">-->
-<!--                  <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda</a>-->
-<!--                  <div class="dropdown-menu" aria-labelledby="dropdown07">-->
-<!--                      <a class="dropdown-item" href="#">Qué es ProfessionApp?</a>-->
-<!--                      <a class="dropdown-item" href="#">Cómo usar ProfessionApp?</a>-->
-<!--                      <a class="dropdown-item" href="#">Quiero trabajar en ProfessionApp!</a>-->
-<!--                    </div>-->
-<!--                </li>-->
 
           </ul>
 
             <!-- botones de la derecha-->
-          {% comment%}
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
-            {% endcomment%}
-
-
 
             <form class="form-inline mt-2 mt-md-0">
             {% if user.is_authenticated %}
                 {% include 'includes/navbar_auth.html' %}
             {% else %}
                 <div>
-                <a href="{% url 'signup' %}" class="btn btn-secondary ml-2">Crear cuenta</a>
-                <a href="{% url 'login' %}" class="btn btn-outline-light"><svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <a href="{% url 'signup' %}" class="btn btn-outline-primary ml-2">Crear cuenta</a>
+                <a href="{% url 'login' %}" class="btn btn-primary"><svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>
                     </svg>Ingresar
                 </a>
                 </div>
                 {% endif %}
             </form>
-
         </div>
-</div>
-</nav>
-
-<nav>
-    <ul class="nav justify-content-center">
-        {% for profesion in profesiones %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'especialidad-list' profesion %}">{{profesion.name |title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    </div>
 </nav>
