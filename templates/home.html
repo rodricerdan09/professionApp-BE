@@ -32,19 +32,19 @@
 
       {% if user.profesional.id %}
           <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
-          <a class="btn btn-secondary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
-          <a class="btn btn-secondary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
+          <a class="btn btn-outline-primary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
+          <a class="btn btn-outline-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
         {% else %}
           <h3><p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p></h3>
-          <a class="btn btn-info btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
+          <a class="btn btn-outline-primary btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
 
       {% endif %}
         <br>
         <br>
 
       <h3><p>Mis datos</p></h3>
-      <a class="btn btn-secondary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
-      <a class="btn btn-secondary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
+      <a class="btn btn-outline-primary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
+      <a class="btn btn-outline-primarybase btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
 
   </div>
 {% else %}
@@ -67,26 +67,18 @@
     </div>
 
     <div class="carousel-item">
-<!--        <img src="http://drive.google.com/uc?export=view&id=19_G2A4CktJ3tdGH6zriAyqNmPCV7P4Yz" class="img-fluid" alt="...">-->
-        <img src="{% static 'images/copiafreedark.jpg' %}" class="img-fluid" alt="...">
-<!--      <img src="http://drive.google.com/uc?export=view&id=1JCXgM-i1-l5yFOGMu1ZfvTKyTZ8cv5Y-" class="img-fluid" alt="...">-->
-<!--      <img src="https://i.pinimg.com/736x/cf/03/da/cf03daabe3b377987013a4994efe500a.jpg" class="img-fluid" alt="...">-->
-      <div class="carousel-caption d-none d-md-block">
-        <h5>100% Gratis!</h5>
-          <p class="font-bold">Un Servicio realmente GRATIS: Sin costos ocultos!!</p>
-
+        <img src="{% static 'images/copiafreedark.jpg' %}" class="img-fluid">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>100% Gratis!</h5>
+            <p class="font-bold">Un Servicio realmente GRATIS: Sin costos ocultos!!</p>
       </div>
     </div>
 
       <div class="carousel-item">
-<!--          <img src="http://drive.google.com/uc?export=view&id=1JCXgM-i1-l5yFOGMu1ZfvTKyTZ8cv5Y-" class="img-fluid" alt="...">-->
           <img src="{% static 'images/copiacaretas.jpg' %}" class="img-fluid" alt="...">
-<!--        <img src="http://drive.google.com/uc?export=view&id=18SItFUaneJPzo360jAZ6kwBQpgGbGlht" class="img-fluid" alt="...">-->
-<!--      <img src="https://image.shutterstock.com/image-photo/collage-portraits-ethnically-diverse-mixed-600w-725291137.jpg" class="d-block w-100" alt="...">-->
       <div class="carousel-caption d-none d-md-block">
         <h5>Estas buscando un servicio profesional ?</h5>
           <p class="font-weight-bold">Mostrale al mundo quien sos como Profesional!</p>
-<!--          <p class="font-weight-bold">Nuestro equipo está para ayudarte</p>-->
       </div>
     </div>
   </div>
