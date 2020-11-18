@@ -7,10 +7,9 @@
 
 <div class="container">
     <div class="main-body">
-
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-              <div class="card">
+              <div class="card border-primary mb-3">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
 <!--                    <img src="{% static 'images/campeon.jpg' %}" alt="" class="rounded-circle" width="220">-->
@@ -48,7 +47,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card mt-3">
+              <div class="card border-primary mt-3">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Sitio Web</h6>
@@ -67,7 +66,7 @@
                       {% endif  %}
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-info"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
                     {% if object.facebook_url %}
                       <span class="text-secondary">@{{object.facebook_url}}</span>
                       {% else  %}
@@ -79,9 +78,9 @@
               </div>
             </div>
             <div class="col-md-8">
-              <div class="card mb-3">
+              <div class="card border-primary mb-3">
                 <div class="card-body">
-                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Datos</i></h6>
+                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Mis Datos</i></h6>
                   <div class="row">
                     <div class="col-sm-3"><h6 class="mb-0">Nombre completo</h6></div>
                     <div class="col-sm-9 text-secondary">{{object.usuario.get_full_name | title}}</div>
@@ -119,9 +118,9 @@
               </div>
               <div class="row gutters-sm">
                 <div class="col-sm-12 mb-3">
-                  <div class="card h-100">
+                  <div class="card border-primary h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Mis Servicios</i></h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Mis Servicios</i></h6>
 
                       <small>{{object.servicio}}</small>
 
