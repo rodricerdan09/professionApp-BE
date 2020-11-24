@@ -1,3 +1,4 @@
 django==2.2.12
 django-crispy-forms
 pillow
+django-filter
