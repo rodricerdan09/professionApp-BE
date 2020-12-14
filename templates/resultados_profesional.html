@@ -3,32 +3,41 @@
 {% block title %}Profesionales{% endblock title %}
 {% block content %}
 
+<br>
 {%if object_list%}
 
+{{filter.form}}
 <center><h2>Resultados encontrados para '{{query}}': {{total}}</h2></center>
 <div class="container d-flex justify-content-center mt-5">
     <div class="main">
         <div class="row">
             {% for profesional in object_list %}
-            <div class="col-md-3">
-                <div>
-                    <div class="one">
-                        <div class="text-right pr-2 pt-1"><i class="mdi mdi-dots-vertical dotdot"></i></div>
-                        <div class="d-flex justify-content-center">
-<!--                            <img src="{% static 'images/avatar7.png' %}" width="100" class="rounded-circle">-->
-                            <img src="{{profesional.profile_pic.url}}" width="100" class="rounded-circle">
-                        </div>
-                        <div class="text-center"> <span class="name">{{profesional}}</span>
-                            <p class="mail">{{profesional.usuario.email}}</p>
-                        </div>
-                        <div class="text-center"> <span class="total d-block pt-2">Profesion</span> <span class="money">{{profesional.profesion | title}}</span> </div>
-                        <div class="text-center align-items-center d-flex justify-content-center pt-2 pb-2">
-                            <a href="{% url 'profesional-detail' profesional.id  %}">Ver perfil</a>
+                <div class="col-lg-4 col-md-6">
+                        <div class="list-grid-item mt-4">
+                            <div class="grid-item-content p-2">
+                                <div class="employers-list-img mt-3">
+                                    <img src="{{profesional.profile_pic.url}}" alt="" class="img-fluid mx-auto d-block rounded-circle">
+                                </div>
+                                <div class="grid-list-desc text-center mt-4">
+                                    <h5 class="mb-1"><a href="#" class="text-dark">{{profesional}}</a></h5>
+                                    <p class="text-muted f-14 mb-0">{{profesional.profesion | title}}</p>
+                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{profesional.usuario.email}}</p>
+                                    <ul class="employers-icons list-inline mb-1">
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                    </ul>
+                                    <span class="badge badge-warning text-white">4.9</span>
+                                </div>
+                            </div>
+                            <hr class="mt-0 mb-0">
+                            <div class="apply-button text-center mt-2 mb-2">
+                                <a href="{% url 'profesional-detail' profesional.id  %}" class="btn btn-custom btn-sm">Ver perfil</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br>
-            </div>
 
             {% endfor %}
     <div class="container">

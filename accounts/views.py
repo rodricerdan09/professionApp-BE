@@ -8,6 +8,7 @@ from .models import Profesion, Especialidad, Profesional
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileCreationForm
+from .filters import ProfesionalFilter
 
 
 class ProfesionListView(ListView):
@@ -30,10 +31,10 @@ class ProfesionalporProfesionListView(ListView):
     paginate_by = 8
     template_name = 'accounts/profesional_por_profesion_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['total'] = Profesional.objects.filter(profesion=self.kwargs['pk']).count()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['total'] = Profesional.objects.filter(profesion=self.kwargs['pk']).count()
+    #     return context
 
     def get_queryset(self):
         return super(ProfesionalporProfesionListView, self).get_queryset().filter(
@@ -43,7 +44,7 @@ class ProfesionalporProfesionListView(ListView):
 
 class ProfesionalListView(ListView):
     model = Profesional
-    paginate_by = 8
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -150,8 +151,11 @@ class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfesionalUpdateNuevoView(LoginRequiredMixin, UpdateView):
     model = Profesional
-    fields = ('profesion', 'matricula', 'telefono', 'profile_pic', 'website_url', 'facebook_url', 'instagram_url', 'servicio')
+    fields = ('profesion', 'matricula', 'telefono', 'profile_pic',
+              'website_url', 'facebook_url', 'instagram_url', 'servicio')
     template_name = 'accounts/profesional_update_nuevo.html'
 
     def get_absolute_url(self):
         return reverse_lazy('profesional-detail', self.id)
+
+

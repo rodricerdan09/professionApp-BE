@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from accounts.forms import UserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from accounts.models import Profesion, Profesional
+from accounts.filters import ProfesionalFilter
 from django.db.models import Q
 
 
@@ -32,6 +33,7 @@ class BuscarResultView(ListView):
     model = Profesional
     paginate_by = 8
     template_name = 'resultados_profesional.html'
+    myFilter = ProfesionalFilter()
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -41,10 +43,11 @@ class BuscarResultView(ListView):
         return object_list
 
     def get_context_data(self, **kwargs):
-        query = self.request.GET.get('q')
+        qs = self.request.GET.get('q')
         context = super().get_context_data(**kwargs)
         context['total'] = Profesional.objects.filter(
-            Q(profesion__name__icontains=query) | Q(servicio__icontains=query)
+            Q(profesion__name__icontains=qs) | Q(servicio__icontains=qs)
         ).count()
-        context['query'] = query
+        context['query'] = qs
+        context['filter'] = ProfesionalFilter(self.request.GET, queryset=self.get_queryset())
         return context
