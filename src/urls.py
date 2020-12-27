@@ -13,6 +13,7 @@ urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
     path('buscar/', BuscarResultView.as_view(), name='buscar'),
     path('cuenta/', include('accounts.urls')),
+    path('erp/', include('solicitudes.urls')),
     path('profesiones/', ProfesionListView.as_view(), name='profesion-list'),
     path('profesiones/<int:pk>', ProfesionalporProfesionListView.as_view(), name='profesional-profesion-list'),
     path('profesiones/<str:profesion_nombre>/', EspecialidadListView.as_view(), name='especialidad-list'),

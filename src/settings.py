@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'solicitudes.apps.SolicitudesConfig',
     'crispy_forms',
     'django_filters',
 ]

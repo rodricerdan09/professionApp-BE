@@ -1,3 +1,24 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView, UpdateView
+from .models import Solicitud, Entidad, UsuarioErp
 
-# Create your views here.
+
+class SolicitudListView(ListView):
+    model = Solicitud
+    # paginate_by = 10
+
+
+class SolicitudDetailView(DetailView):
+    model = Solicitud
+
+
+class SolicitudUpdateView(UpdateView):
+    model = Solicitud
+
+
+class EntidadDetailView(DetailView):
+    model = Entidad
+    template_name = 'solicitudes/entidad_detail.html'
+
+
+class UsuarioErpDetailView(DetailView):
+    model = UsuarioErp

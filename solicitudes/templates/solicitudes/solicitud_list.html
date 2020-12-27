@@ -1,0 +1,19 @@
+{% extends 'solicitudes/base.html' %}
+
+{% block title %}Solicitudes{% endblock title %}
+
+{% block content %}
+<br>
+
+<h2>Solicitudes</h2>
+
+<ul>
+{% for solicitud in object_list %}
+    <li>Solicitud id: {{solicitud.id}}</li>
+    <li>Fecha Alta: {{solicitud.fecha_alta}}</li>
+    <li>Profesional: {{solicitud.profesional}}</li>
+    <br>
+{%endfor%}
+</ul>
+
+{%endblock%}

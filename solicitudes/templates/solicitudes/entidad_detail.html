@@ -1,0 +1,14 @@
+{% extends 'solicitudes/base.html' %}
+{% load static %}
+{% block title %}Detalle de Solicitud{% endblock title %}
+
+{% block content %}
+
+<h2>Detalle de Entidad</h2>
+
+<ul>
+    <li>Entidad Id: {{object.id}}</li>
+    <li>Nombre: {{object.nombre}}</li>
+    <li>Provincia: {{object.get_provincia_display}}</li>
+</ul>
+{% endblock  %}

@@ -1,0 +1,15 @@
+{% extends 'solicitudes/base.html' %}
+{% load static %}
+{% block title %}Detalle de usuario{% endblock title %}
+
+{% block content %}
+
+<h2>Detalle de Cuenta</h2>
+
+<ul>
+    <li>Usuario Id: {{object.id}}</li>
+    <li>Usuario: @{{object.usuario}}</li>
+    <li>Trabaja en: {{object.entidad}}</li>
+    <hr>
+</ul>
+{% endblock  %}
