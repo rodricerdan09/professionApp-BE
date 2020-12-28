@@ -28,7 +28,7 @@ class Entidad(models.Model):
         verbose_name_plural = "entidades"
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} - ({self.get_provincia_display()})"
 
 
 class UsuarioErp(models.Model):
@@ -60,7 +60,7 @@ class Solicitud(models.Model):
         (APROBADA, "Aprobada"),
     ]
 
-    profesional = models.OneToOneField(Profesional, on_delete=models.DO_NOTHING)
+    profesional = models.ForeignKey(Profesional, on_delete=models.DO_NOTHING)
     entidad = models.ForeignKey(Entidad, on_delete=models.DO_NOTHING,
                                 blank=False,
                                 null=False)

@@ -9,22 +9,18 @@
   <div class="card-body">
 
     <form method="POST">{% csrf_token %}
-<!--        <h5><p>Los siguientes datos seran enviados para su validacion a la entidad correspondiente</p></h5>-->
-<!--        <p>Apeliido y Nombre: {{user.profesional | title}}</p>-->
-<!--        <p>Profesion: {{user.profesional.profesion | title}}</p>-->
-<!--        <p>Fecha: {{now}}</p>-->
-<!--        <p>Estado: Iniciado</p>-->
         <p><h4>Solicitud Nro: {{object.id}}</h4></p>
         <p><strong>Profesional:</strong> {{object.profesional | title }}</p>
-        <p><strong>Fecha de alta::</strong> {{object.fecha_alta }}</p>
+        <p><strong>Matricula:</strong> {{object.profesiona.matricula }}</p>
+        <p><strong>Fecha de alta:</strong> {{object.fecha_alta }}</p>
+
         {{ form.estado|as_crispy_field }}
         {{ form.observacion|as_crispy_field }}
-
 
         <button class="btn btn-info" type="submit">Confirmar</button>
     </form>
 
   </div>
 </div>
-{% endblock content %}
+{% endblock %}
 

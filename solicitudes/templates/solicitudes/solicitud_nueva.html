@@ -13,10 +13,11 @@
 
     <form method="POST">{% csrf_token %}
         <h5><p>Los siguientes datos seran enviados para su validacion a la entidad correspondiente</p></h5>
-        <p>Apeliido y Nombre: {{user.profesional | title}}</p>
-        <p>Profesion: {{user.profesional.profesion | title}}</p>
-        <p>Fecha: {{now}}</p>
-        <p>Estado: Iniciado</p>
+        <p><strong>Apeliido y Nombre:</strong> {{user.profesional | title}}</p>
+        <p><strong>Profesion:</strong> {{user.profesional.profesion | title}}</p>
+        <p><strong>Matricula:</strong> {{user.profesional.matricula}}</p>
+        <p><strong>Fecha:</strong> {{now}}</p>
+        <p><strong>Estado:</strong> Iniciado</p>
         {{ form.entidad|as_crispy_field }}
 
 
