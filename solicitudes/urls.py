@@ -3,9 +3,12 @@ from django.urls import path, include
 from .views import SolicitudListView, SolicitudDetailView
 from .views import EntidadDetailView
 from .views import UsuarioErpDetailView
+from .views import ErpLoginView
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
+    path('login/', ErpLoginView.as_view(), name='login-erp'),
+    path('password_change/', ErpLoginView.as_view(), name='password-erp'),
+
     path('solicitudes/', SolicitudListView.as_view(), name='solicitudes-list'),
     path('solicitud/<int:pk>', SolicitudDetailView.as_view(), name='solicitud-detail'),
     path('entidad/<int:pk>', EntidadDetailView.as_view(), name='entidad-detail'),

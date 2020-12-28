@@ -5,15 +5,63 @@
 {% block content %}
 <br>
 
-<h2>Solicitudes</h2>
+<center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card text-center text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h5>Solicitudes Aprobadas</h5></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{aprobadas}}</h5>
+                    </div>
+            </div>
+        </div>
 
-<ul>
-{% for solicitud in object_list %}
-    <li>Solicitud id: {{solicitud.id}}</li>
-    <li>Fecha Alta: {{solicitud.fecha_alta}}</li>
-    <li>Profesional: {{solicitud.profesional}}</li>
-    <br>
-{%endfor%}
-</ul>
+        <div class="col">
+            <div class="card text-center text-white bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h5>Solicitudes en Revision</h5></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{revision}}</h5>
+                    </div>
+            </div>
+        </div>
 
+        <div class="col">
+            <div class="card text-center text-white bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h5>Solicitudes Rechazadas</h5></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{rechazadas}}</h5>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Profesional</th>
+      <th scope="col">Fecha Solicitud</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for solicitud in object_list %}
+          <tr>
+            <th scope="row">{{solicitud.id}}</th>
+            <th>{{solicitud.profesional}}</th>
+            <th>{{solicitud.fecha_alta}}</th>
+            <th>{{solicitud.get_estado_display}}</th>
+          </tr>
+      {%endfor%}
+  </tbody>
+</table>
+</div>
+
+</center>
 {%endblock%}

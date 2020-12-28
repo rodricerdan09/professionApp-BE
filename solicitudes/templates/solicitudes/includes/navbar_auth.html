@@ -7,8 +7,14 @@
         </button>
 
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="{% url 'usuarioerp-detail' user.usuarioerp.id %}">Mi Cuenta</a>
-            <a class="dropdown-item" href="{% url 'entidad-detail' user.usuarioerp.entidad.id %}">Mi Entidad</a>
+            {% if user.usuarioerp.id %}
+                <a class="dropdown-item" href="{% url 'usuarioerp-detail' user.usuarioerp.id %}">Mi Cuenta</a>
+                <a class="dropdown-item" href="{% url 'entidad-detail' user.usuarioerp.entidad.id %}">Mi Entidad</a>
+            {% else %}
+                <a class="dropdown-item disabled">Mi Cuenta</a>
+                <a class="dropdown-item disabled">Mi Entidad</a>
+            {% endif %}
+
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'user-update' user.id %}">Modificar datos</a>
             <a class="dropdown-item" href="{% url 'password_change'%}">Cambiar contraseña</a>
