@@ -30,21 +30,24 @@
         <a class="btn btn-info btn-lg" href="{% url 'user-detail' user.get_username %}" role="button">Ver mis datos</a>
       {% endcomment %}
 
-      {% if user.profesional.id %}
-          <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
-          <a class="btn btn-outline-primary btn" href="{% url 'profesional-detail' user.profesional.id  %}" role="button">Ver perfil Profesional</a>
-          <a class="btn btn-outline-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
-        {% else %}
-          <h3><p>Uds es Profesional? Quiere publicar sus servicios? Cree una Cuenta Profesional.</p></h3>
-          <a class="btn btn-outline-primary btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear a un perfil Profesional!</a>
-
-      {% endif %}
-        <br>
-        <br>
-
       <h3><p>Mis datos</p></h3>
       <a class="btn btn-outline-primary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
-      <a class="btn btn-outline-primarybase btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
+      <a class="btn btn-outline-primary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
+      <br>
+      <br>
+
+        {% if user.profesional.id %}
+            <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
+            <a class="btn btn-outline-primary btn" href="{% url 'profesional-detail' user.profesional.id %}" role="button">Ver perfil Profesional</a>
+            <a class="btn btn-outline-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
+            <br>
+            <br>
+            <h3><p>Validar matricula</p></h3>
+                <a class="btn btn-outline-primary btn" href="{% url 'solicitud-create'%}" role="button">Crear Solicitud</a>
+        {% else %}
+            <h3><p>Uds es Profesional? Quiere publicar sus servicios?</p></h3>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear perfil Profesional!</a>
+        {% endif %}
 
   </div>
 {% else %}

@@ -71,7 +71,7 @@ class Solicitud(models.Model):
     fecha_aprobacion = models.DateTimeField(help_text='fecha de aprobacion',
                                             null=True,
                                             blank=True)
-    observacion = models.CharField(help_text="agregue una observacion",
+    observacion = models.CharField(help_text="Aqui puede agregar una observacion",
                                    max_length=50,
                                    default="",
                                    blank=True,

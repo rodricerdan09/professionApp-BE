@@ -22,7 +22,7 @@ class AdminUsuarioErp(admin.ModelAdmin):
 
 @admin.register(Solicitud)
 class AdminSolicitud(admin.ModelAdmin):
-    list_display = ["__str__", "fecha_alta", "profesional", "estado"]
+    list_display = ["__str__", "fecha_alta", "profesional", "entidad", "estado"]
     list_filter = ["entidad", "estado", "fecha_alta"]
     date_hierarchy = "fecha_alta"
     list_editable = ["estado"]

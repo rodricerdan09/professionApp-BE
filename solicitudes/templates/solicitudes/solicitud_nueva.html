@@ -1,0 +1,29 @@
+{% extends 'solicitudes/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Crear Solicitud{% endblock title %}
+{% block content %}
+<h2>Alta de Solicitud</h2>
+<div class="text">
+    <p><i>Presione 'confirmar' para crear una solicitud. De esta manera la Entidad correspondiente validará su Matricula</i>
+    </p>
+</div>
+<br>
+<div class="card" style="width:75%;">
+  <div class="card-body">
+
+    <form method="POST">{% csrf_token %}
+        <h5><p>Los siguientes datos seran enviados para su validacion a la entidad correspondiente</p></h5>
+        <p>Apeliido y Nombre: {{user.profesional | title}}</p>
+        <p>Profesion: {{user.profesional.profesion | title}}</p>
+        <p>Fecha: {{now}}</p>
+        <p>Estado: Iniciado</p>
+        {{ form.entidad|as_crispy_field }}
+
+
+        <button class="btn btn-info" type="submit">Confirmar</button>
+    </form>
+
+  </div>
+</div>
+{% endblock content %}
+

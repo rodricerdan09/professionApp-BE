@@ -31,7 +31,7 @@ def error_404_view(request, exception):
 
 class BuscarResultView(ListView):
     model = Profesional
-    paginate_by = 8
+    paginate_by = 6
     template_name = 'resultados_profesional.html'
     myFilter = ProfesionalFilter()
 

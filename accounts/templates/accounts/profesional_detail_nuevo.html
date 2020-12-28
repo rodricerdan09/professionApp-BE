@@ -4,7 +4,7 @@
 {% block title %}Detalle del Profesional{% endblock title %}
 
 {% block content %}
-
+<br>
 <div class="container">
     <div class="main-body">
           <div class="row gutters-sm">
@@ -80,7 +80,7 @@
             <div class="col-md-8">
               <div class="card border-primary mb-3">
                 <div class="card-body">
-                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Mis Datos</i></h6>
+                  <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Datos</i></h6>
                   <div class="row">
                     <div class="col-sm-3"><h6 class="mb-0">Nombre completo</h6></div>
                     <div class="col-sm-9 text-secondary">{{object.usuario.get_full_name | title}}</div>
@@ -120,7 +120,7 @@
                 <div class="col-sm-12 mb-3">
                   <div class="card border-primary h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Mis Servicios</i></h6>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Servicios</i></h6>
 
                       <small>{{object.servicio}}</small>
 

@@ -1,67 +1,125 @@
 {% extends 'solicitudes/base.html' %}
-
+{% load static %}
 {% block title %}Solicitudes{% endblock title %}
 
 {% block content %}
 <br>
-
+{%if user.usuarioerp.id%}
 <center>
 <div class="container">
     <div class="row">
+
+        <div class="col">
+            <div class="card text-center text-white bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h5>Nuevas</h5></div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{nuevas}}</h4>
+                    </div>
+            </div>
+        </div>
+
+
         <div class="col">
             <div class="card text-center text-white bg-success mb-3" style="max-width: 18rem;">
-                <div class="card-header"><h5>Solicitudes Aprobadas</h5></div>
+                <div class="card-header"><h5>Aprobadas</h5></div>
                     <div class="card-body">
-                        <h5 class="card-title">{{aprobadas}}</h5>
+                        <h4 class="card-title">{{aprobadas}}</h4>
                     </div>
             </div>
         </div>
 
         <div class="col">
-            <div class="card text-center text-white bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-header"><h5>Solicitudes en Revision</h5></div>
+            <div class="card text-center text-white bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h5>En Revision</h5></div>
                     <div class="card-body">
-                        <h5 class="card-title">{{revision}}</h5>
+                        <h4 class="card-title">{{revision}}</h4>
                     </div>
             </div>
         </div>
 
         <div class="col">
             <div class="card text-center text-white bg-danger mb-3" style="max-width: 18rem;">
-                <div class="card-header"><h5>Solicitudes Rechazadas</h5></div>
+                <div class="card-header"><h5>Anuladas</h5></div>
                     <div class="card-body">
-                        <h5 class="card-title">{{rechazadas}}</h5>
+                        <h4 class="card-title">{{rechazadas}}</h4>
                     </div>
             </div>
         </div>
     </div>
 </div>
-
+</center>
 
 <br>
 
 <div class="container">
-<table class="table table-striped">
+<table id="table_id" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Profesional</th>
       <th scope="col">Fecha Solicitud</th>
       <th scope="col">Estado</th>
+      <th scope="col">Entidad</th>
+      <th scope="col">Fecha Aprobacion</th>
+      <th scope="col">Editar</th>
     </tr>
   </thead>
+
   <tbody>
       {% for solicitud in object_list %}
           <tr>
-            <th scope="row">{{solicitud.id}}</th>
-            <th>{{solicitud.profesional}}</th>
-            <th>{{solicitud.fecha_alta}}</th>
-            <th>{{solicitud.get_estado_display}}</th>
+              <th scope="row">{{solicitud.id}}</th>
+              <td>{{solicitud.profesional | title}}</td>
+              <td>{{solicitud.fecha_alta}}</td>
+              <td>{{solicitud.get_estado_display}}</td>
+              <td>{{solicitud.entidad}}</td>
+              {% if solicitud.fecha_aprobacion%}
+                <td>{{solicitud.fecha_aprobacion}}</td>
+              {%else%}
+                <td>-</td>
+              {%endif%}
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+              </td>
           </tr>
       {%endfor%}
   </tbody>
 </table>
+    <hr>
+{%else%}
+    <div class="section">
+        <center>
+            <img src="{% static 'images/stop.png' %}">
+            <h2>@{{user}} <strong>NO</strong> tienes permisos para utilizar esta sección</h2>
+            <p>Comunicate con un Administrador</p>
+        </center>
+    </div>
+{%endif%}
+{%endblock%}
+
+{% block js %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/datatables.min.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/datatables.min.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable({
+
+    dom: 'B<"clear">lfrtip',
+    buttons: {
+        name: 'primary',
+        buttons: [ 'copy', 'excel', 'pdf' ]
+
+        }}
+    );
+} );
+</script>
 </div>
 
-</center>
 {%endblock%}

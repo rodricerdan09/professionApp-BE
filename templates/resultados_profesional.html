@@ -5,8 +5,7 @@
 
 <br>
 {%if object_list%}
-
-{{filter.form}}
+<!--{{filter.form}}-->
 <center><h2>Resultados encontrados para '{{query}}': {{total}}</h2></center>
 <div class="container d-flex justify-content-center mt-5">
     <div class="main">
@@ -29,7 +28,7 @@
                                         <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
                                         <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
                                     </ul>
-                                    <span class="badge badge-warning text-white">4.9</span>
+<!--                                    <span class="badge badge-warning text-white">4.9</span>-->
                                 </div>
                             </div>
                             <hr class="mt-0 mb-0">
@@ -40,7 +39,9 @@
                     </div>
 
             {% endfor %}
+
     <div class="container">
+    <br>
     {% if is_paginated %}
         <ul class="pagination ag-flex-center">
             {% if page_obj.has_previous %}
