@@ -87,4 +87,3 @@ class ErpLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('solicitudes-list')
-

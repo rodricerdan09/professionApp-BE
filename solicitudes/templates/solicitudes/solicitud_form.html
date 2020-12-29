@@ -11,7 +11,7 @@
     <form method="POST">{% csrf_token %}
         <p><h4>Solicitud Nro: {{object.id}}</h4></p>
         <p><strong>Profesional:</strong> {{object.profesional | title }}</p>
-        <p><strong>Matricula:</strong> {{object.profesiona.matricula }}</p>
+        <p><strong>Matricula:</strong> {{object.profesional.matricula }}</p>
         <p><strong>Fecha de alta:</strong> {{object.fecha_alta }}</p>
 
         {{ form.estado|as_crispy_field }}

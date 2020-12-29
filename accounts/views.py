@@ -157,5 +157,3 @@ class ProfesionalUpdateNuevoView(LoginRequiredMixin, UpdateView):
 
     def get_absolute_url(self):
         return reverse_lazy('profesional-detail', self.id)
-
-

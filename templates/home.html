@@ -30,22 +30,22 @@
         <a class="btn btn-info btn-lg" href="{% url 'user-detail' user.get_username %}" role="button">Ver mis datos</a>
       {% endcomment %}
 
-      <h3><p>Mis datos</p></h3>
+      <h3>Mis datos</h3>
       <a class="btn btn-outline-primary btn" href="{% url 'user-detail' user.get_username  %}" role="button">Ver mis datos</a>
       <a class="btn btn-outline-primary btn" href="{% url 'user-update' user.id %}" role="button">Modificar mis datos</a>
       <br>
       <br>
 
         {% if user.profesional.id %}
-            <h3><p>Ya tiene su perfil Profesional activado!</p></h3>
+            <h3>Ya tiene su perfil Profesional activado!</h3>
             <a class="btn btn-outline-primary btn" href="{% url 'profesional-detail' user.profesional.id %}" role="button">Ver perfil Profesional</a>
             <a class="btn btn-outline-primary btn" href="{% url 'profesional-update' user.profesional.id %}" role="button">Editar perfil Profesional</a>
             <br>
             <br>
-            <h3><p>Validar matricula</p></h3>
+            <h3>Validar matricula</h3>
                 <a class="btn btn-outline-primary btn" href="{% url 'solicitud-create'%}" role="button">Crear Solicitud</a>
         {% else %}
-            <h3><p>Uds es Profesional? Quiere publicar sus servicios?</p></h3>
+            <h3>Uds es Profesional? Quiere publicar sus servicios?</h3>
             <a class="btn btn-outline-primary btn-lg" href="{% url 'crear-perfil' %}" role="button">Crear perfil Profesional!</a>
         {% endif %}
 
@@ -97,7 +97,7 @@
   <hr>
 
   <div class="container">
-      <center><p><h2>¿Por qué abrir una cuenta en ProfessionApp?</h2></p></center>
+      <center><h2>¿Por qué abrir una cuenta en ProfessionApp?</h2></center>
   </div>
   <hr>
  <section>
@@ -162,7 +162,7 @@
 <hr>
  </section>
   <div class="container">
-    <center><p><h1>Abrí tu Cuenta en simples pasos</h1></p></center>
+    <center><h1>Abrí tu Cuenta en simples pasos</h1></center>
 
     {% include 'includes/home-containers.html' %}
     <hr>
