@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profesion, Especialidad, Profesional
+from .models import Profesion, Especialidad, Profesional, Horario
 
 
 class InLineEspecialidad(admin.StackedInline):
@@ -33,11 +33,16 @@ class AdminEspecialidad(admin.ModelAdmin):
 
 @admin.register(Profesional)
 class AdminEspecialidad(admin.ModelAdmin):
-    list_display = ['__str__', 'profesion', 'matricula', 'servicio']  # es lo que se muestra en la grilla
+    list_display = ['__str__', 'profesion', 'matricula', 'servicio', 'admin_horarios']  # es lo que se muestra en la grilla
     list_filter = ['profesion']  # filtro a la derecha
 
     class Meta:
         model = Profesional
+
+
+@admin.register(Horario)
+class AdminEspecialidad(admin.ModelAdmin):
+    list_display = ['weekday', 'from_hour', 'to_hour']
 
 
 admin.site.site_header = "ProfessionalApp | Administrador"

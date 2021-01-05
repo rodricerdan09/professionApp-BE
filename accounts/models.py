@@ -1,3 +1,5 @@
+from datetime import time
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -85,6 +87,34 @@ class Especialidad(models.Model):
         return f"{self.profesion}: {self.name}"
 
 
+class Horario(models.Model):
+    DIAS = [
+        (1, "Lunes a Viernes"),
+        (2, "Lunes a Sábado"),
+        (3, "Lunes"),
+        (4, "Martes"),
+        (5, "Miercoles"),
+        (6, "Jueves"),
+        (7, "Viernes"),
+        (8, "Sábado"),
+        (9, "Domingo"),
+    ]
+
+    DEFAULT_HORA_INICIO = time(hour=8)
+    DEFAULT_HORA_FIN = time(hour=16)
+
+    weekday = models.IntegerField("Dia", choices=DIAS, default=1)
+    from_hour = models.TimeField("Hora desde", default=DEFAULT_HORA_INICIO)
+    to_hour = models.TimeField("Hora hasta", default=DEFAULT_HORA_FIN)
+
+    class Meta:
+        ordering = ('weekday', 'from_hour', 'to_hour')
+        unique_together = ('weekday', 'from_hour', 'to_hour')
+
+    def __str__(self):
+        return f"{self.get_weekday_display()} de {self.from_hour.strftime('%H:%M')} hs a {self.to_hour.strftime('%H:%M')} hs"
+
+
 class Profesional(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     matricula = models.IntegerField(default=0, blank=True, null=True)
@@ -100,6 +130,9 @@ class Profesional(models.Model):
     instagram_url = models.CharField("Instragram",
                                      help_text="Solamente el nombre de su cuenta. Ej: www.instagram.com/micuenta",
                                      max_length=255, blank=True, null=True)
+    horarios = models.ManyToManyField(Horario,
+                                      help_text="Mantenga presionada la tecla 'Ctrl' para seleccionar mas de uno"
+                                      )
 
     class Meta:
         ordering = ["usuario__last_name"]
@@ -110,3 +143,8 @@ class Profesional(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+    def admin_horarios(self):
+        return ' | '.join([str(h) for h in self.horarios.all()])
+
+    admin_horarios.short_description = "Horarios"

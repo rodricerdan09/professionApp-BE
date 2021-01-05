@@ -117,10 +117,11 @@ class UserDesactivarCuentaView(LoginRequiredMixin, UpdateView):
             return HttpResponseRedirect(url)
 
 
-class CrearPerfilProfesional(CreateView):
+class CrearPerfilProfesional(LoginRequiredMixin, CreateView):
     model = Profesional
     form_class = ProfileCreationForm
     template_name = 'registration/crear_perfil.html'
+    login_url = '/cuenta/login'
 
     def form_valid(self, form):
         form.instance.usuario = self.request.user
@@ -152,7 +153,7 @@ class ProfesionalUpdateView(LoginRequiredMixin, UpdateView):
 class ProfesionalUpdateNuevoView(LoginRequiredMixin, UpdateView):
     model = Profesional
     fields = ('profesion', 'matricula', 'telefono', 'profile_pic',
-              'website_url', 'facebook_url', 'instagram_url', 'servicio')
+              'website_url', 'facebook_url', 'instagram_url', 'servicio', 'horarios')
     template_name = 'accounts/profesional_update_nuevo.html'
 
     def get_absolute_url(self):

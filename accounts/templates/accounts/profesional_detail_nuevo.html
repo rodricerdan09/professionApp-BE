@@ -121,8 +121,19 @@
                   <div class="card border-primary h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Servicios</i></h6>
-
                       <small>{{object.servicio}}</small>
+                      <div><br></div>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Horario de Atención</i></h6>
+                      {% if object.horarios.all %}
+                        <ul>
+                            {% for horario in object.horarios.all %}
+                              <small><li>{{horario}}</li></small>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                      <ul><small><li>No informa horario de atencion</li></small></ul>
+                    {% endif %}
+
 
                     </div>
                   </div>

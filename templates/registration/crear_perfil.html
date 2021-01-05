@@ -8,14 +8,14 @@
   <div class="card-body">
 
     <form method="POST">{% csrf_token %}
-
-          {{ form.profesion|as_crispy_field }}
-          {{ form.matricula|as_crispy_field }}
-          {{ form.telefono|as_crispy_field }}
-          {{ form.servicio|as_crispy_field }}
-          {{ form.website_url|as_crispy_field }}
-          {{ form.facebook_url|as_crispy_field }}
-          {{ form.instagram_url|as_crispy_field }}
+        {{ form.profesion|as_crispy_field }}
+        {{ form.matricula|as_crispy_field }}
+        {{ form.telefono|as_crispy_field }}
+        {{ form.horarios|as_crispy_field }}
+        {{ form.servicio|as_crispy_field }}
+        {{ form.website_url|as_crispy_field }}
+        {{ form.facebook_url|as_crispy_field }}
+        {{ form.instagram_url|as_crispy_field }}
 
         <button class="btn btn-info" type="submit">Crear perfil</button>
     </form>
