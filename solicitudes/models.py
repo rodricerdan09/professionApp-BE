@@ -28,7 +28,7 @@ class Entidad(models.Model):
         verbose_name_plural = "entidades"
 
     def __str__(self):
-        return f"{self.nombre} - ({self.get_provincia_display()})"
+        return f"{self.nombre.title()} - ({self.get_provincia_display()})"
 
 
 class UsuarioErp(models.Model):
@@ -41,7 +41,7 @@ class UsuarioErp(models.Model):
 
     def __str__(self):
         if len(self.usuario.last_name) > 0:
-            return f"{self.usuario.last_name},{self.usuario.first_name} - ({self.entidad.nombre})"
+            return f"{self.usuario.last_name.title()},{self.usuario.first_name.title()} - ({self.entidad.nombre.title()})"
         else:
             return f"@{self.usuario.username}"
 

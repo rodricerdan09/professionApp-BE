@@ -56,7 +56,7 @@ class Profesion(models.Model):
         verbose_name_plural = "profesiones"
 
     def __str__(self):
-        return self.name
+        return self.name.title()
 
     def count_esp(self):
         return Especialidad.objects.filter(profesion=self.pk).count()
@@ -112,7 +112,38 @@ class Horario(models.Model):
         unique_together = ('weekday', 'from_hour', 'to_hour')
 
     def __str__(self):
-        return f"{self.get_weekday_display()} de {self.from_hour.strftime('%H:%M')} hs a {self.to_hour.strftime('%H:%M')} hs"
+        inicio = self.from_hour.strftime('%H:%M')
+        fin = self.to_hour.strftime('%H:%M')
+        return f"{self.get_weekday_display()} de {inicio} hs a {fin} hs"
+
+
+class Direccion(models.Model):
+    CIUDAD = [
+        (3, "Barranqueras"),
+        (2, "Corrientes"),
+        (1, "Resistencia"),
+    ]
+
+    LUGAR_TRABAJO = [
+        (1, "Oficina"),
+        (2, "Consultorio"),
+        (4, "Empresa"),
+        (3, "Domicilio particular"),
+    ]
+
+    calle = models.CharField(max_length=100, blank=False, null=False)
+    numero = models.PositiveSmallIntegerField()
+    ciudad = models.PositiveSmallIntegerField(choices=CIUDAD, default=1)
+    piso_dpto = models.CharField("Piso/Dpto", help_text="Opcional",
+                                 max_length=5, blank=True, null=True)
+    lugar = models.PositiveSmallIntegerField("Lugar de trabajo", choices=LUGAR_TRABAJO, default=1)
+
+    class Meta:
+        ordering = ["calle"]
+        verbose_name_plural = "Direcciones"
+
+    def __str__(self):
+        return f"{self.calle.title()} {self.numero} ({self.get_ciudad_display()})"
 
 
 class Profesional(models.Model):
@@ -133,13 +164,14 @@ class Profesional(models.Model):
     horarios = models.ManyToManyField(Horario,
                                       help_text="Mantenga presionada la tecla 'Ctrl' para seleccionar mas de uno"
                                       )
+    direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE, blank=False, null=True)
 
     class Meta:
         ordering = ["usuario__last_name"]
         verbose_name_plural = "Profesionales"
 
     def __str__(self):
-        return f"{self.usuario.last_name},{self.usuario.first_name}"
+        return f"{self.usuario.last_name.title()},{self.usuario.first_name.title()}"
 
     def get_absolute_url(self):
         return reverse('home')
