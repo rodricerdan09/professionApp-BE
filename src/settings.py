@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'solicitudes.apps.SolicitudesConfig',
+    'comentarios.apps.ComentariosConfig',
     'crispy_forms',
     'django_filters',
 ]

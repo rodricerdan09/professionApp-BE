@@ -1,5 +1,4 @@
 from datetime import time
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -31,17 +30,6 @@ PROVINCIA = [
     (23, "Tucumán"),
 
 ]
-
-
-class TimeStampedModel(models.Model):
-    created = models.DateTimeField(auto_now_add=True, verbose_name='creado',
-                                   help_text='fecha de creacion')
-
-    modified = models.DateTimeField(auto_now=True, verbose_name='modificado',
-                                    help_text='fecha de modificacion')
-
-    class Meta:
-        abstract = True
 
 
 class Profesion(models.Model):
@@ -171,7 +159,7 @@ class Profesional(models.Model):
         verbose_name_plural = "Profesionales"
 
     def __str__(self):
-        return f"{self.usuario.last_name.title()},{self.usuario.first_name.title()}"
+        return f"{self.profesion.abbreviation.title()}: {self.usuario.last_name.title()},{self.usuario.first_name.title()}"
 
     def get_absolute_url(self):
         return reverse('home')

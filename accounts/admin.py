@@ -46,5 +46,5 @@ class AdminEspecialidad(admin.ModelAdmin):
 
 
 admin.site.register(Direccion)
-admin.site.site_header = "ProfessionalApp | Administrador"
+admin.site.site_header = "ProfessionalApp | Back Office | Ver 1.1.0"
 admin.site.index_title = "ProfessionalApp | Admin Dashboard"
