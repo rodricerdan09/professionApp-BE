@@ -1,6 +1,7 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Detalle del Profesional{% endblock title %}
 
 {% block content %}
@@ -134,6 +135,18 @@
                       <ul><small><li>No informa horario de atencion</li></small></ul>
                     {% endif %}
 
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Direccion</i></h6>
+                      {% if object.direccion %}
+                        <ul>
+                          <li><small>{{object.direccion}}</small></li>
+                          <small><li>Piso/Departamento: {{object.direccion.piso_dpto}}</li></small>
+                          <small><li>Lugar: {{object.direccion.get_lugar_display}}</li></small>
+                        </ul>
+                      {% else %}
+                        <ul><small><li>No informa direccion de contacto</li></small></ul>
+                      {% endif %}
+
+                      <div><br></div>
 
                     </div>
                   </div>
@@ -143,5 +156,21 @@
           </div>
         </div>
     </div>
+<br>
+<h2>Comentarios...</h2>
+
+{% if not profesional.comentarios.all %}
+
+<p>Este perfil no tiene comentarios :C .. <a href="#"> Agregar un comentario</a></p>
+
+{% else %}
+
+  {% for comentario in profesional.comentarios.all %}
+    <p><i>@{{comentario.creador}}</i> ({{comentario.creador.get_full_name | title}}) - {{comentario.created | naturaltime}}</p>
+    <p><strong>{{comentario.mensaje}}</strong></p>
+    <hr class="col-xs-12">
+  {% endfor %}
+
+{% endif %}
 
 {% endblock %}
