@@ -12,7 +12,7 @@ class Comentario(CreationModificationDateMixin):
     mensaje = models.TextField()
 
     class Meta:
-        ordering = ["creador", "profesional"]
+        ordering = ["-modified"]
         constraints = [
             models.UniqueConstraint(
                 fields=['creador', "profesional"],

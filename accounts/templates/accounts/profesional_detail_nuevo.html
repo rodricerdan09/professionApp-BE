@@ -146,8 +146,6 @@
                         <ul><small><li>No informa direccion de contacto</li></small></ul>
                       {% endif %}
 
-                      <div><br></div>
-
                     </div>
                   </div>
                 </div>
@@ -157,8 +155,9 @@
         </div>
     </div>
 <br>
+<hr>
 <h2>Comentarios...</h2>
-
+<br>
 {% if not profesional.comentarios.all %}
 
 <p>Este perfil no tiene comentarios :C .. <a href="#"> Agregar un comentario</a></p>
@@ -166,7 +165,7 @@
 {% else %}
 
   {% for comentario in profesional.comentarios.all %}
-    <p><i>@{{comentario.creador}}</i> ({{comentario.creador.get_full_name | title}}) - {{comentario.created | naturaltime}}</p>
+    <p><i>@{{comentario.creador}}</i> ({{comentario.creador.get_full_name | title}}) - {{comentario.modified | naturaltime}}</p>
     <p><strong>{{comentario.mensaje}}</strong></p>
     <hr class="col-xs-12">
   {% endfor %}
