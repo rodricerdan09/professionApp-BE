@@ -2,7 +2,7 @@ from datetime import time
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from comentarios.models import Comentario
 
 PROVINCIA = [
     (1, "Buenos Aires"),
@@ -168,3 +168,7 @@ class Profesional(models.Model):
         return ' | '.join([str(h) for h in self.horarios.all()])
 
     admin_horarios.short_description = "Horarios"
+
+    @property
+    def num_de_comentarios(self):
+        return Comentario.objects.filter(profesional=self.id).count()

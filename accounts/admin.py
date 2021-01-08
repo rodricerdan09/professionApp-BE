@@ -33,7 +33,7 @@ class AdminEspecialidad(admin.ModelAdmin):
 
 @admin.register(Profesional)
 class AdminEspecialidad(admin.ModelAdmin):
-    list_display = ['__str__', 'profesion', 'matricula', 'direccion', 'servicio', 'admin_horarios']  # es lo que se muestra en la grilla
+    list_display = ['__str__', 'profesion', 'matricula', 'direccion', 'servicio', 'admin_horarios', 'num_de_comentarios']  # es lo que se muestra en la grilla
     list_filter = ['profesion']  # filtro a la derecha
 
     class Meta:

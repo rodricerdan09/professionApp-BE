@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from accounts.models import Profesional
 from .utils import CreationModificationDateMixin
 
 
 class Comentario(CreationModificationDateMixin):
-    profesional = models.ForeignKey(Profesional,
+    profesional = models.ForeignKey('accounts.Profesional',
                                     related_name="comentarios",
                                     on_delete=models.CASCADE)
     creador = models.ForeignKey(User, on_delete=models.CASCADE)
