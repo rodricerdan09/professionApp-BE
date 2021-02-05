@@ -153,6 +153,7 @@ class Profesional(models.Model):
                                       help_text="Mantenga presionada la tecla 'Ctrl' para seleccionar mas de uno"
                                       )
     direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE, blank=False, null=True)
+    favoritos = models.ManyToManyField(User, related_name='prof_favoritos')
 
     class Meta:
         ordering = ["usuario__last_name"]
