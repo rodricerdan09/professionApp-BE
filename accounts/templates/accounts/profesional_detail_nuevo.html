@@ -6,7 +6,22 @@
 
 {% block content %}
 <br>
-<div class="container">
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Perfil</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Información</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Comentarios ({{object.num_de_comentarios}})</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="container">
     <div class="main-body">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -115,7 +130,6 @@
                       {%else%}
                       <div class="col-sm-9 text-secondary">No informa</div>
                       {%endif%}
-
                   </div>
                   <hr>
                   <div class="row">
@@ -130,29 +144,6 @@
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Servicios</i></h6>
                       <small>{{object.servicio}}</small>
-                      <div><br></div>
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Horario de Atención</i></h6>
-                      {% if object.horarios.all %}
-                        <ul>
-                            {% for horario in object.horarios.all %}
-                              <small><li>{{horario}}</li></small>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                      <ul><small><li>No informa horario de atencion</li></small></ul>
-                    {% endif %}
-
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Direccion</i></h6>
-                      {% if object.direccion %}
-                        <ul>
-                          <li><small>{{object.direccion}}</small></li>
-                          <small><li>Piso/Departamento: {{object.direccion.piso_dpto}}</li></small>
-                          <small><li>Lugar: {{object.direccion.get_lugar_display}}</li></small>
-                        </ul>
-                      {% else %}
-                        <ul><small><li>No informa direccion de contacto</li></small></ul>
-                      {% endif %}
-
                     </div>
                   </div>
                 </div>
@@ -161,22 +152,45 @@
           </div>
         </div>
     </div>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Horario de Atención</i></h6>
+    {% if object.horarios.all %}
+      <ul>
+        {% for horario in object.horarios.all %}
+          <small><li>{{horario}}</li></small>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <ul><small><li>No informa horario de atencion</li></small></ul>
+    {% endif %}
+
+    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-primary mr-2">Direccion</i></h6>
+      {% if object.direccion %}
+        <ul>
+          <li><small>{{object.direccion}}</small></li>
+          <small><li>Piso/Departamento: {{object.direccion.piso_dpto}}</li></small>
+          <small><li>Lugar: {{object.direccion.get_lugar_display}}</li></small>
+        </ul>
+      {% else %}
+        <ul><small><li>No informa direccion de contacto</li></small></ul>
+      {% endif %}
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+    {% if not profesional.comentarios.all %}
+      <p>Este Profesional no tiene comentarios :C <a href="#"> Agregar un comentario</a></p>
+    {% else %}
+
+      {% for comentario in profesional.comentarios.all %}
+        <p><i>@{{comentario.creador}}</i> ({{comentario.creador.get_full_name | title}}) - {{comentario.modified | naturaltime}}</p>
+        <p><strong>{{comentario.mensaje}}</strong></p>
+        <hr class="col-xs-12">
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
 <br>
-<hr>
-<h2>Comentarios...</h2>
+
 <br>
-{% if not profesional.comentarios.all %}
-
-<p>Este perfil no tiene comentarios :C .. <a href="#"> Agregar un comentario</a></p>
-
-{% else %}
-
-  {% for comentario in profesional.comentarios.all %}
-    <p><i>@{{comentario.creador}}</i> ({{comentario.creador.get_full_name | title}}) - {{comentario.modified | naturaltime}}</p>
-    <p><strong>{{comentario.mensaje}}</strong></p>
-    <hr class="col-xs-12">
-  {% endfor %}
-
-{% endif %}
-
 {% endblock %}
