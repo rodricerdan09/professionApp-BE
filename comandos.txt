@@ -28,3 +28,6 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+cuenta font awesome
+genexus@yopmail.com
+superjapo
